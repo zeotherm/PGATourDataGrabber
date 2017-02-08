@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace PGADataScaper
 {
-	class PlayerStats
+	public class StatItem
 	{
+		public string Name { get; set; }
+		public double Value { get; set; }
+		public int Rank { get; set; }
+		public int ID { get; set; }
+	}
+
+	public class PlayerStats
+	{
+
 	}
 }
