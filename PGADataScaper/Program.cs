@@ -44,7 +44,27 @@ namespace PGADataScaper {
 				}
 			}
 		}
-
+		private static void ProcessStatDictionary(string filepath, Action<Dictionary<string, StatItem>, JObject> f, Dictionary<string, StatItem> d) {
+			using (var jsonfile = new StreamReader(filepath)) {
+				try {
+					Console.WriteLine("Reading Stats from player file {0}", Path.GetFileName(filepath));
+					JObject player_obj = (JObject)JToken.ReadFrom(new JsonTextReader(jsonfile));
+					var tourCode = player_obj["plrs"][0]["years"][0]["tours"][0]["tourCodeUC"].ToString();
+					if (tourCode == "R") {
+						var all_stats = player_obj["plrs"][0]["years"][0]["tours"][0]["statCats"];
+						var length = all_stats.Count();
+						for (int i = 0; i < length; ++i) {
+							foreach (JObject stat in all_stats[i]["stats"]) {
+								f(d, stat);
+							}
+						}
+					}
+				} catch (JsonReaderException) {
+					Console.WriteLine("File was not in propoer JSON format: {0}", Path.GetFileName(filepath));
+				}
+			}
+			return;
+		}
 		private static List<PlayerStats> PopulateAllPlayerStats(string path, string DataDir) {
 			var playerList = XDocument.Load(Path.Combine(DataDir, "PlayerList.xml"));
 			var players = playerList.Descendants("option").Where(e => !String.IsNullOrEmpty(e.Attribute("value").Value));
@@ -55,34 +75,22 @@ namespace PGADataScaper {
 				if (File.Exists(Path.Combine(path, player.FileName))) {
 					var all_stats_dict = DeserializeStatCats(Path.Combine(DataDir, "statCats.json"));
 					// This entire following chunk of code can be abstracted and have a lambda passed into the center portion which will keep redundancy down
-					using (var jsonfile = new StreamReader(Path.Combine(path, player.FileName))) {
-						try {
-							Console.WriteLine("Reading Stats from player file {0}", player.FileName);
-							JObject player_obj = (JObject)JToken.ReadFrom(new JsonTextReader(jsonfile));
-							var tourCode = player_obj["plrs"][0]["years"][0]["tours"][0]["tourCodeUC"].ToString();
-							if (tourCode == "R") {
-								var all_stats = player_obj["plrs"][0]["years"][0]["tours"][0]["statCats"];
-								var length = all_stats.Count();
-								for (int i = 0; i < length; ++i) {
-									foreach (JObject stat in all_stats[i]["stats"]) {
-										var ID = stat["statID"].ToString();
-										all_stats_dict[ID].Info.Value = stat["value"].ToString();
-										all_stats_dict[ID].Info.Rank = (int)stat["rank"]; // TODO: Yes, yes, potential bad cast
-										if (ID == "02394") {
-											var numTop10s = stat["additionals"][1]["value"].ToString();
-											var numberWins = stat["additionals"][0]["value"].ToString();
-											all_stats_dict[Top10s].Info.Value = (String.IsNullOrEmpty(numTop10s) ? "0" : numTop10s);
-											all_stats_dict[Top10s].Info.Rank = -1; // Data not provided
-											all_stats_dict[NumWins].Info.Value = (String.IsNullOrEmpty(numberWins) ? "0" : numberWins);
-											all_stats_dict[NumWins].Info.Rank = -1; // Data not provided
-										}
-									}
-								}
-							}
-						} catch (JsonReaderException) {
-							Console.WriteLine("File was not in propoer JSON format: {0}", player.FileName);
+
+					Action<Dictionary<string, StatItem>, JObject> process = (d, o) =>
+					{
+						var ID = o["statID"].ToString();
+						d[ID].Info.Value = o["value"].ToString();
+						d[ID].Info.Rank = (int)o["rank"]; // TODO: Yes, yes, potential bad cast
+						if (ID == "02394") {
+							var numTop10s = o["additionals"][1]["value"].ToString();
+							var numberWins = o["additionals"][0]["value"].ToString();
+							d[Top10s].Info.Value = (String.IsNullOrEmpty(numTop10s) ? "0" : numTop10s);
+							d[Top10s].Info.Rank = -1; // Data not provided
+							d[NumWins].Info.Value = (String.IsNullOrEmpty(numberWins) ? "0" : numberWins);
+							d[NumWins].Info.Rank = -1; // Data not provided
 						}
-					}
+					};
+					ProcessStatDictionary(Path.Combine(path, player.FileName), process, all_stats_dict);
 					stat_list.Add(new PlayerStats() { player = player, stats = all_stats_dict.Select(item => item.Value).OrderBy(n => n.Name).ToList() });
 
 				}
@@ -127,41 +135,27 @@ namespace PGADataScaper {
 			Dictionary<string, StatItem> StatDictionary = new Dictionary<string, StatItem>();
 
 			foreach (var fi in di.EnumerateFiles().Where(f => f.Extension.ToLower() == ".json")) {
-				using (var jsonfile = new StreamReader(fi.FullName)) {
-					try {
-						Console.WriteLine("Reading Stats from player file {0}", fi.Name);
-						JObject player_obj = (JObject)JToken.ReadFrom(new JsonTextReader(jsonfile));
-						var tourCode = player_obj["plrs"][0]["years"][0]["tours"][0]["tourCodeUC"].ToString();
-						if (tourCode == "R") {
-							var all_stats = player_obj["plrs"][0]["years"][0]["tours"][0]["statCats"];
-							var length = all_stats.Count();
-							for (int i = 0; i < length; ++i) {
-								foreach (JObject stat in all_stats[i]["stats"]) {
-									var ID = stat["statID"].ToString();
-									var name = stat["name"].ToString();
-									if (!StatDictionary.ContainsKey(ID)) {
-										StatDictionary.Add(ID, new StatItem() { Name = name, Info = new StatValue() });
-										if (ID == "02394") {
-											StatDictionary.Add(Top10s, new StatItem()
-											{
-												Name = stat["additionals"][1]["title"].ToString(),
-												Info = new StatValue()
-											});
-											StatDictionary.Add(NumWins, new StatItem()
-											{
-												Name = stat["additionals"][0]["title"].ToString(),
-												Info = new StatValue()
-											});
-										}
-									}
-
-								}
-							}
+				Action<Dictionary<string, StatItem>, JObject> process = (d, o) =>
+				{
+					var ID = o["statID"].ToString();
+					var name = o["name"].ToString();
+					if (!d.ContainsKey(ID)) {
+						d.Add(ID, new StatItem() { Name = name, Info = new StatValue() });
+						if (ID == "02394") {
+							d.Add(Top10s, new StatItem()
+							{
+								Name = o["additionals"][1]["title"].ToString(),
+								Info = new StatValue()
+							});
+							d.Add(NumWins, new StatItem()
+							{
+								Name = o["additionals"][0]["title"].ToString(),
+								Info = new StatValue()
+							});
 						}
-					} catch (JsonReaderException) {
-						Console.WriteLine("File was not in propoer JSON format: {0}", fi.Name);
 					}
-				}
+				};
+				ProcessStatDictionary(fi.FullName, process, StatDictionary);
 			}
 			return StatDictionary;
 		}
