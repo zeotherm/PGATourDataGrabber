@@ -8,11 +8,38 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace PGADataScaper {
 	class Program {
 		static void Main(string[] args) {
-			MainAsync().Wait();
+			//MainAsync().Wait();
+            var CurrentUser = Environment.UserName;
+            var Desktop = String.Format(@"C:\Users\{0}\Desktop", CurrentUser);
+            var DataDir = String.Format(Path.Combine(Desktop, "PGA Stats"));
+            var path = Path.Combine(DataDir, DateTime.Now.ToString("yyyyMMdd"));
+            var di = new DirectoryInfo(path);
+
+            JObject player_obj = (JObject)JToken.ReadFrom(new JsonTextReader(new StreamReader(@"C:\Users\Matt\Desktop\PGATourDataGrabber\Thomas_Justin.json")));
+
+
+            var all_stats = player_obj["plrs"][0]["years"][0]["tours"][0]["statCats"];
+            var length = all_stats.Count();
+            int j = 0;
+            for (int i = 1; i < length; ++i) {
+                foreach (JObject stat in all_stats[i]["stats"]) {
+                    Console.WriteLine("Stat {0}:\nName = {1}\nID = {2}\nValue = {3}\nRank = {4}", j++, stat["name"].ToString(),
+                        stat["statID"].ToString(), stat["value"].ToString(), stat["rank"].ToString());
+                }
+            }
+            
+            //foreach (var fi in di.EnumerateFiles()) {
+            //    using (var jsonfile = new StreamReader(fi.Name)) {
+            //        JObject player_stats = (JObject)JToken.ReadFrom(new JsonTextReader(jsonfile));
+            //        Console.WriteLine((string)player_stats["plrs"]["years"]["tours"]["statCats"]);
+            //    }
+            //}
 		}
 
 		static async Task MainAsync() {

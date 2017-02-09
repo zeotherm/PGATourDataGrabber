@@ -11,7 +11,7 @@ namespace PGADataScaper
 		public string Name { get; set; }
 		public double Value { get; set; }
 		public int Rank { get; set; }
-		public int ID { get; set; }
+		public string ID { get; set; }
 	}
 
 	public class PlayerStats
