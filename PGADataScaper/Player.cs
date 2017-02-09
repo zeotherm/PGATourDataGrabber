@@ -30,7 +30,7 @@ namespace PGADataScaper {
 
         public string FullName {
             get {
-                return String.Format("{0} {1}", First, Last);
+                return String.Format("{0} {1}", First.Replace('-', ' '), Last);
             }
         }
     }
