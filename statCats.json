@@ -1,0 +1,933 @@
+{
+  "02567": {
+    "Name": "SG: Off-the-Tee",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "02568": {
+    "Name": "SG: Approach-the-Green",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "02569": {
+    "Name": "SG: Around-the-Green",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "02564": {
+    "Name": "SG: Putting",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "02674": {
+    "Name": "SG: Tee-to-Green",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "02675": {
+    "Name": "SG: Total",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "101": {
+    "Name": "Driving Distance",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "102": {
+    "Name": "Driving Accuracy Percentage",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "103": {
+    "Name": "Greens in Regulation Percentage",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "156": {
+    "Name": "Birdie Average",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "120": {
+    "Name": "Scoring Average",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "111": {
+    "Name": "Sand Save Percentage",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "02394": {
+    "Name": "FedExCup Season Points",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "Top10s": {
+    "Name": "# of Top 10's",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "NumWins": {
+    "Name": "# of Wins",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "109": {
+    "Name": "Official Money",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "186": {
+    "Name": "Official World Golf Ranking",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "317": {
+    "Name": "Driving Distance - All Drives",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "02420": {
+    "Name": "Distance from Edge of Fairway",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "459": {
+    "Name": "Left Rough Tendency",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "460": {
+    "Name": "Right Rough Tendency",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "129": {
+    "Name": "Total Driving",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "02401": {
+    "Name": "Club Head Speed",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "02412": {
+    "Name": "Total Driving Efficiency",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "419": {
+    "Name": "Going for the Green",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "486": {
+    "Name": "Going for the Green - Hit Green Pct.",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "02357": {
+    "Name": "Going for the Green - Birdie or Better",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "331": {
+    "Name": "Proximity to Hole",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "437": {
+    "Name": "Rough Proximity",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "432": {
+    "Name": "Left Rough Proximity",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "433": {
+    "Name": "Right Rough Proximity",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "431": {
+    "Name": "Fairway Proximity",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "02361": {
+    "Name": "Approaches from > 275 yards",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "02360": {
+    "Name": "Approaches from 250-275 yards",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "02359": {
+    "Name": "Approaches from 225-250 yards",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "02358": {
+    "Name": "Approaches from 200-225 yards",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "075": {
+    "Name": "Approaches from 75-100 yards",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "074": {
+    "Name": "Approaches from 100-125 yards",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "340": {
+    "Name": "Approaches from 50-125 yards",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "339": {
+    "Name": "Approaches from 125-150 yards",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "338": {
+    "Name": "Approaches from 150-175 yards",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "337": {
+    "Name": "Approaches from 175-200 yards",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "336": {
+    "Name": "Approaches from > 200 yards",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "02375": {
+    "Name": "Approaches from > 275 yards (Rgh)",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "02371": {
+    "Name": "Approaches from > 100 yards (Rgh)",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "02369": {
+    "Name": "Approaches from > 200 yards (Rgh)",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "02368": {
+    "Name": "Approaches from 175-200 yards (Rgh)",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "02367": {
+    "Name": "Approaches from 150-175 yards (Rgh)",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "02366": {
+    "Name": "Approaches from 125-150 yards (Rgh)",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "02365": {
+    "Name": "Approaches from 50-125 yards (Rgh)",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "02364": {
+    "Name": "Approaches from 100-125 yards (Rgh)",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "375": {
+    "Name": "Proximity to Hole from Sand",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "130": {
+    "Name": "Scrambling",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "364": {
+    "Name": "Scrambling from the Fringe",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "363": {
+    "Name": "Scrambling from the Rough",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "366": {
+    "Name": "Scrambling from > 30 yards",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "367": {
+    "Name": "Scrambling from 20-30 yards",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "368": {
+    "Name": "Scrambling from 10-20 yards",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "369": {
+    "Name": "Scrambling from < 10 yards",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "02428": {
+    "Name": "Total Putting",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "104": {
+    "Name": "Putting Average",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "402": {
+    "Name": "Overall Putting Average",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "413": {
+    "Name": "One-Putt Percentage",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "426": {
+    "Name": "3-Putt Avoidance",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "119": {
+    "Name": "Putts Per Round",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "393": {
+    "Name": "Putts per Round - Round 1",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "394": {
+    "Name": "Putts per Round - Round 2",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "395": {
+    "Name": "Putts per Round - Round 3",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "396": {
+    "Name": "Putts per Round - Round 4",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "341": {
+    "Name": "Putting from 3'",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "342": {
+    "Name": "Putting from 4'",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "343": {
+    "Name": "Putting from 5'",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "344": {
+    "Name": "Putting from 6'",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "345": {
+    "Name": "Putting from 7'",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "346": {
+    "Name": "Putting from 8'",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "347": {
+    "Name": "Putting from 9'",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "348": {
+    "Name": "Putting from 10'",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "485": {
+    "Name": "Putting from 4-8'",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "484": {
+    "Name": "Putting - Inside 10'",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "405": {
+    "Name": "Putting from - 10-15'",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "406": {
+    "Name": "Putting from - 15-20'",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "407": {
+    "Name": "Putting from - 20-25'",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "408": {
+    "Name": "Putting from - > 25'",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "498": {
+    "Name": "Longest Putts",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "349": {
+    "Name": "Approach Putt Performance",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "438": {
+    "Name": "Average Distance of Putts made",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "115": {
+    "Name": "Birdie or Better Conversion Percentage",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "299": {
+    "Name": "Lowest Round",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "108": {
+    "Name": "Scoring Average (Actual)",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "107": {
+    "Name": "Total Birdies",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "106": {
+    "Name": "Total Eagles",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "105": {
+    "Name": "Par Breakers",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "148": {
+    "Name": "Round 1 Scoring Average",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "149": {
+    "Name": "Round 2 Scoring Average",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "117": {
+    "Name": "Round 3 Scoring Average",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "285": {
+    "Name": "Round 4 Scoring Average",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "118": {
+    "Name": "Final Round Scoring Average",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "207": {
+    "Name": "Front 9 Scoring Average",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "208": {
+    "Name": "Back 9 Scoring Average",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "292": {
+    "Name": "Early Scoring Average",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "293": {
+    "Name": "Late Scoring Average",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "142": {
+    "Name": "Par 3 Scoring Average",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "143": {
+    "Name": "Par 4 Scoring Average",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "144": {
+    "Name": "Par 5 Scoring Average",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "219": {
+    "Name": "Final Round Performance",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "112": {
+    "Name": "Par 3 Birdie or Better Leaders",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "113": {
+    "Name": "Par 4 Birdie or Better Leaders",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "114": {
+    "Name": "Par 5 Birdie or Better Leaders",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "352": {
+    "Name": "Birdie or Better Percentage",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "160": {
+    "Name": "Bounce Back",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "482": {
+    "Name": "YTD Par or Better Streak",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "295": {
+    "Name": "Best YTD 1-Putt or Better Streak",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "294": {
+    "Name": "Best YTD Streak w/o a 3-Putt",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "483": {
+    "Name": "Current Streak without a 3-Putt",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "296": {
+    "Name": "Consecutive Sand Saves",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "297": {
+    "Name": "Consecutive Fairways Hit",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "298": {
+    "Name": "Consecutive GIR",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "452": {
+    "Name": "Consecutive Holes Below Par",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "449": {
+    "Name": "Consecutive Par 3 Birdies",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "02672": {
+    "Name": "Consecutive Birdies Streak",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "155": {
+    "Name": "Eagles (Holes per)",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "159": {
+    "Name": "Longest Drives",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "076": {
+    "Name": "Approaches from 50-75 yards",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "02372": {
+    "Name": "Approaches from 200-225 yards (Rgh)",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "02370": {
+    "Name": "Approaches from inside 100 yards (Rgh)",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "02363": {
+    "Name": "Approaches from 75-100 yards (Rgh)",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "350": {
+    "Name": "Total Hole Outs",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "351": {
+    "Name": "Longest Hole Outs (in yards)",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "02673": {
+    "Name": "Consecutive Birdies/Eagles streak",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "122": {
+    "Name": "Consecutive Cuts",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "02374": {
+    "Name": "Approaches from 250-275 yards (Rgh)",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "02373": {
+    "Name": "Approaches from 225-250 yards (Rgh)",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  },
+  "02362": {
+    "Name": "Approaches from 50-75 yards (Rgh)",
+    "Info": {
+      "Rank": -99,
+      "Value": "N/A"
+    }
+  }
+}

@@ -9,7 +9,6 @@ namespace PGADataScaper
 {
 	public class StatItem {
 		public string Name { get; set; }
-		//[JsonIgnore]
 		public StatValue Info { get; set;}
 
 		public override string ToString() {

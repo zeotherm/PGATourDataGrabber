@@ -22,7 +22,7 @@ namespace PGADataScaper {
 			var CurrentUser = Environment.UserName;
 			var Desktop = String.Format(@"C:\Users\{0}\Desktop", CurrentUser);
 			var DataDir = String.Format(Path.Combine(Desktop, "PGA Stats"));
-			var path = Path.Combine(DataDir, DateTime.Now.ToString("yyyyMMdd"));
+			var path = Path.Combine(DataDir, String.Format("Week_{0}", DateTime.Now.Iso8601WeekOfYear().ToString("D2")));
 
 
 			var statCats = PopulateStatisticsDictionary(path);
