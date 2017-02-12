@@ -22,22 +22,22 @@ namespace PGADataScaper {
 			var CurrentUser = Environment.UserName;
 			var Desktop = String.Format(@"C:\Users\{0}\Desktop", CurrentUser);
 			var DataDir = String.Format(Path.Combine(Desktop, "PGA Stats"));
-			var path = Path.Combine(DataDir, String.Format("Week_{0}", DateTime.Now.Iso8601WeekOfYear().ToString("D2")));
+			var WorkingDirectory = Path.Combine(DataDir, String.Format("Week_{0}", DateTime.Now.Iso8601WeekOfYear().ToString("D2")));
 
 
-			var statCats = PopulateStatisticsDictionary(path);
+			var statCats = PopulateStatisticsDictionary(WorkingDirectory);
 			UpdateStatsFile(DataDir, statCats);
 
 
-			List<PlayerStats> player_stats = PopulateAllPlayerStats(path, DataDir);
-			using (var output = new StreamWriter(Path.Combine(path, "results.csv"))) {
+			List<PlayerStats> player_stats = PopulateAllPlayerStats(WorkingDirectory, DataDir);
+			using (var output = new StreamWriter(Path.Combine(WorkingDirectory, "results.csv"))) {
 				output.WriteLine(player_stats[0].ToCSVHeaderLine());
 				foreach( var p in player_stats) {
 					output.WriteLine(p.ToCSVLineEntry());
 				}
 			}
 
-			using (var output = new StreamWriter(Path.Combine(path, "results-dkonly.csv"))) {
+			using (var output = new StreamWriter(Path.Combine(WorkingDirectory, "results-dkonly.csv"))) {
 				output.WriteLine(player_stats[0].ToCSVHeaderLine());
 				foreach (var p in player_stats.Where(p=>p.IsDKSet()).Select(p=> p)) {
 					output.WriteLine(p.ToCSVLineEntry());
@@ -164,43 +164,9 @@ namespace PGADataScaper {
 			var CurrentUser = Environment.UserName;
 			var Desktop = String.Format(@"C:\Users\{0}\Desktop", CurrentUser);
 			var DataDir = String.Format(Path.Combine(Desktop, "PGA Stats"));
-			var playerList = XDocument.Load(Path.Combine(DataDir, "PlayerList.xml"));
-			var players = playerList.Descendants("option").Where(e => !String.IsNullOrEmpty(e.Attribute("value").Value));
-			var player_ids = players.Select(p => new Player(p.Value.Split(','), p.Attribute("value").Value.Split('.')[1]));
-			
-			var path = Path.Combine(DataDir, DateTime.Now.ToString("yyyyMMdd"));
-			DirectoryInfo di;
-			if (!Directory.Exists(path)) {
-				di = Directory.CreateDirectory(path);
-			} else {
-				di = new DirectoryInfo(path);
-			}
-			var wc = new System.Net.WebClient();
-			foreach (var player in player_ids) {
-				try {
-					
-					await WritePlayerData(player, di, await GatherPlayerData(player, di, wc));
-				} catch (WebException) {
-					Console.WriteLine(String.Format("An error occured the program could not download player data: {0}", player.FullName));
-					using (var error_file = new StreamWriter(Path.Combine(di.FullName, "error.log"), true)) {
-						error_file.WriteLine(player.FullName);
-					}
-				}
-			}
-		}
+			var gather = new PlayerDataGather(DataDir);
 
-		static async Task<string> GatherPlayerData( Player p, DirectoryInfo di, WebClient wc) {
-			var webpath = String.Format(@"http://www.pgatour.com/data/players/{0}/2017stat.json", p.ID);
-			Console.WriteLine("Downloading data for player {0}", p.FullName);
-			return await wc.DownloadStringTaskAsync(webpath);
-		}
-
-		static async Task WritePlayerData( Player p, DirectoryInfo di, string data) {
-			var file_path = Path.Combine(di.FullName, p.FileName);
-			using (var player_file = new StreamWriter(file_path)) {
-				Console.WriteLine("Writing file {0}", file_path);
-				await player_file.WriteLineAsync(data);
-			}
+			await gather.GatherAndWriteAllPlayerStats();
 		}
 	}
 }
