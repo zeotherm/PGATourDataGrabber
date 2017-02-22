@@ -18,28 +18,36 @@ namespace PGADataScaper {
 		static string Top10s = "Top10s";
 
 		static void Main(string[] args) {
-			//MainAsync().Wait();
+			//
 			var CurrentUser = Environment.UserName;
 			var Desktop = String.Format(@"C:\Users\{0}\Desktop", CurrentUser);
 			var DataDir = String.Format(Path.Combine(Desktop, "PGA Stats"));
 			var WorkingDirectory = Path.Combine(DataDir, String.Format("Week_{0}", DateTime.Now.Iso8601WeekOfYear().ToString("D2")));
+			MainAsync(DataDir).Wait();  //Populate data dir
 
+			Console.WriteLine("Press any key when DKSalaries.csv is put into this week's directory...");
+			var foo = Console.ReadLine();
 
+			// Process data directory
 			var statCats = PopulateStatisticsDictionary(WorkingDirectory);
 			UpdateStatsFile(DataDir, statCats);
 
 
 			List<PlayerStats> player_stats = PopulateAllPlayerStats(WorkingDirectory, DataDir);
-			using (var output = new StreamWriter(Path.Combine(WorkingDirectory, "results.csv"))) {
+			using (var output = new StreamWriter(Path.Combine(WorkingDirectory, "results.csv")))
+			{
 				output.WriteLine(player_stats[0].ToCSVHeaderLine());
-				foreach( var p in player_stats) {
+				foreach (var p in player_stats)
+				{
 					output.WriteLine(p.ToCSVLineEntry());
 				}
 			}
 
-			using (var output = new StreamWriter(Path.Combine(WorkingDirectory, "results-dkonly.csv"))) {
+			using (var output = new StreamWriter(Path.Combine(WorkingDirectory, "results-dkonly.csv")))
+			{
 				output.WriteLine(player_stats[0].ToCSVHeaderLine());
-				foreach (var p in player_stats.Where(p=>p.IsDKSet()).Select(p=> p)) {
+				foreach (var p in player_stats.Where(p => p.IsDKSet()).Select(p => p))
+				{
 					output.WriteLine(p.ToCSVLineEntry());
 				}
 			}
@@ -160,10 +168,10 @@ namespace PGADataScaper {
 			return StatDictionary;
 		}
 
-		static async Task MainAsync() {
-			var CurrentUser = Environment.UserName;
-			var Desktop = String.Format(@"C:\Users\{0}\Desktop", CurrentUser);
-			var DataDir = String.Format(Path.Combine(Desktop, "PGA Stats"));
+		static async Task MainAsync(string DataDir) {
+			//var CurrentUser = Environment.UserName;
+			//var Desktop = String.Format(@"C:\Users\{0}\Desktop", CurrentUser);
+			//var DataDir = String.Format(Path.Combine(Desktop, "PGA Stats"));
 			var gather = new PlayerDataGather(DataDir);
 
 			await gather.GatherAndWriteAllPlayerStats();
