@@ -10,21 +10,16 @@ using System.Xml.Linq;
 
 namespace PGADataScaper
 {
-	class PlayerDataGather : IPlayerDataGather
+	class PlayerWebDataGather : IPlayerWebDataGather
 	{
-		private WebClient wc;
+		private readonly WebClient wc;
 		private DirectoryInfo root_di, data_di;
+		private readonly IPlayerGather _pg;
 
-		public PlayerDataGather( string root) { // Root is the Desktop\PGS Stats directory which holds Players.xml and the statCat.json file
+		public PlayerWebDataGather( string root, IPlayerGather pg) { // Root is the Desktop\PGS Stats directory which holds Players.xml and the statCat.json file
 			root_di = new DirectoryInfo(root);
 			wc = new WebClient();
-		}
-
-		public IEnumerable<Player> ReadPlayerList() {
-			var playerList = XDocument.Load(Path.Combine(root_di.FullName, "PlayerList.xml"));
-			var players = playerList.Descendants("option").Where(e => !String.IsNullOrEmpty(e.Attribute("value").Value));
-			var player_ids = players.Select(p => new Player(p.Value.Split(','), p.Attribute("value").Value.Split('.')[1]));
-			return player_ids;
+			_pg = pg;
 		}
 
 		public async Task GatherAndWriteAllPlayerStats() {
@@ -34,7 +29,7 @@ namespace PGADataScaper
 			} else {
 				data_di = new DirectoryInfo(path);
 			}
-			foreach (var player in ReadPlayerList()) {
+			foreach (var player in _pg.ReadPlayerList()) {
 				try {
 					await WritePlayerData(player, await GatherPlayerData(player));
 				} catch (WebException) {

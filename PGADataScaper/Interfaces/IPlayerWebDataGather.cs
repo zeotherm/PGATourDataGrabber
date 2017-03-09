@@ -3,9 +3,8 @@ using System.Threading.Tasks;
 
 namespace PGADataScaper.Interfaces
 {
-	public interface IPlayerDataGather
+	public interface IPlayerWebDataGather
 	{
-		IEnumerable<Player> ReadPlayerList();
 		Task GatherAndWriteAllPlayerStats();
 	}
 }
