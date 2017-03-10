@@ -1,20 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CBA3E98A-DF7C-4081-89BB-9AEB102BA366}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{895079AD-2026-478F-AAFD-0E7DD20EA359}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PGADataScaper</RootNamespace>
-    <AssemblyName>PGADataScaper</AssemblyName>
+    <RootNamespace>PGADataScraperAPI</RootNamespace>
+    <AssemblyName>PGADataScraperAPI</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -34,26 +31,38 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="CombinatoricsExtension.cs" />
+    <Compile Include="Interfaces\IJSONSerializer.cs" />
+    <Compile Include="Interfaces\IPlayerGather.cs" />
+    <Compile Include="Interfaces\IPlayerWebDataGather.cs" />
+    <Compile Include="Interfaces\IStatisticsDictionary.cs" />
+    <Compile Include="Interfaces\IStatPopulator.cs" />
+    <Compile Include="Player.cs" />
+    <Compile Include="PlayerGather.cs" />
+    <Compile Include="PlayerStats.cs" />
+    <Compile Include="PlayerWebDataGather.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StatDictSerializer.cs" />
+    <Compile Include="StatisticsDictionary.cs" />
+    <Compile Include="StatPopulator.cs" />
+    <Compile Include="WeekOfYearExtension.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\PGADataScraperAPI\PGADataScraperAPI.csproj">
-      <Project>{895079ad-2026-478f-aafd-0e7dd20ea359}</Project>
-      <Name>PGADataScraperAPI</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

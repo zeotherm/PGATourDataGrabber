@@ -7,7 +7,7 @@ using System.Xml.Linq;
 
 namespace PGADataScaper
 {
-	class PlayerGather : IPlayerGather
+	public class PlayerGather : IPlayerGather
 	{
 		private DirectoryInfo root_di;
 

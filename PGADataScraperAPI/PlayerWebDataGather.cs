@@ -6,7 +6,7 @@ using System.Net;
 
 namespace PGADataScaper
 {
-	class PlayerWebDataGather : IPlayerWebDataGather
+	public class PlayerWebDataGather : IPlayerWebDataGather
 	{
 		private readonly WebClient wc;
 		private DirectoryInfo root_di, data_di;

@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGADataScaper", "PGADataScaper\PGADataScaper.csproj", "{CBA3E98A-DF7C-4081-89BB-9AEB102BA366}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGAAnalyticsUI", "PGAAnalyticsUI\PGAAnalyticsUI.csproj", "{D39A8D6B-3E10-4120-BAC3-2B223706E77D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGADataScraperAPI", "PGADataScraperAPI\PGADataScraperAPI.csproj", "{895079AD-2026-478F-AAFD-0E7DD20EA359}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{CBA3E98A-DF7C-4081-89BB-9AEB102BA366}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBA3E98A-DF7C-4081-89BB-9AEB102BA366}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBA3E98A-DF7C-4081-89BB-9AEB102BA366}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D39A8D6B-3E10-4120-BAC3-2B223706E77D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D39A8D6B-3E10-4120-BAC3-2B223706E77D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D39A8D6B-3E10-4120-BAC3-2B223706E77D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D39A8D6B-3E10-4120-BAC3-2B223706E77D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{895079AD-2026-478F-AAFD-0E7DD20EA359}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{895079AD-2026-478F-AAFD-0E7DD20EA359}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{895079AD-2026-478F-AAFD-0E7DD20EA359}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{895079AD-2026-478F-AAFD-0E7DD20EA359}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
