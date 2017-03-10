@@ -1,12 +1,8 @@
 ﻿using PGADataScaper.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Net;
-using System.Xml.Linq;
 
 namespace PGADataScaper
 {
@@ -16,7 +12,7 @@ namespace PGADataScaper
 		private DirectoryInfo root_di, data_di;
 		private readonly IPlayerGather _pg;
 
-		public PlayerWebDataGather( string root, IPlayerGather pg) { // Root is the Desktop\PGS Stats directory which holds Players.xml and the statCat.json file
+		public PlayerWebDataGather( string root, IPlayerGather pg) { // Root is the Desktop\PGA Stats directory which holds Players.xml and the statCat.json file
 			root_di = new DirectoryInfo(root);
 			wc = new WebClient();
 			_pg = pg;
