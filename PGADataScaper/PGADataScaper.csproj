@@ -51,6 +51,7 @@
     <Compile Include="Interfaces\IPlayerWebDataGather.cs" />
     <Compile Include="Interfaces\IPlayerGather.cs" />
     <Compile Include="Interfaces\IStatisticsDictionary.cs" />
+    <Compile Include="Interfaces\IStatPopulator.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PlayerGather.cs" />
     <Compile Include="PlayerWebDataGather.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StatDictSerializer.cs" />
     <Compile Include="StatisticsDictionary.cs" />
+    <Compile Include="StatPopulator.cs" />
     <Compile Include="WeekOfYearExtension.cs" />
   </ItemGroup>
   <ItemGroup>
