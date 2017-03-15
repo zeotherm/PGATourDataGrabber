@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PGADataScaper
+namespace PGADataScaper.API
 {
 	public class Player {
 		public string Last { get; private set; }

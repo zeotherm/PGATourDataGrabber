@@ -1,10 +1,10 @@
-﻿using PGADataScaper.Interfaces;
+﻿using PGADataScaper.API.Interfaces;
 using System;
 using System.Threading.Tasks;
 using System.IO;
 using System.Net;
 
-namespace PGADataScaper
+namespace PGADataScaper.API
 {
 	public class PlayerWebDataGather : IPlayerWebDataGather
 	{

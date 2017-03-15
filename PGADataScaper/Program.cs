@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using PGADataScaper.API;
+using PGADataScaper.API.Interfaces;
+using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.VisualBasic.FileIO;
-using PGADataScaper.Interfaces;
 
 namespace PGADataScaper
 {

@@ -1,11 +1,11 @@
-﻿using PGADataScaper.Interfaces;
+﻿using PGADataScaper.API.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
 
-namespace PGADataScaper
+namespace PGADataScaper.API
 {
 	public class PlayerGather : IPlayerGather
 	{

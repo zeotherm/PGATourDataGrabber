@@ -1,11 +1,11 @@
 ﻿using Microsoft.VisualBasic.FileIO;
-using PGADataScaper.Interfaces;
+using PGADataScaper.API.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace PGADataScaper
+namespace PGADataScaper.API
 {
 	public class StatPopulator : IStatPopulator
 	{

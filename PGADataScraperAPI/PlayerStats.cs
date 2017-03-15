@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PGADataScaper
+namespace PGADataScaper.API
 {
 	public class StatItem {
 		public string Name { get; set; }
