@@ -20,6 +20,8 @@ namespace PGADataScaper.API
 		private static string NumWins = "NumWins";
 		private static string Top10s = "Top10s";
 
+		public EventHandler<PopulatingStatsEventArgs> PopulatingPlayer;
+
 		private StatisticsDictionary()
 		{
 			_populate = (d, o) =>
@@ -120,30 +122,47 @@ namespace PGADataScaper.API
 		{
 			using (var jsonfile = new StreamReader(filepath))
 			{
-				try
+
+				OnPopulationAttempt(new PopulatingStatsEventArgs { Message = $"Reading Stats from player file {Path.GetFileName(filepath)}", TimePopulated = DateTime.Now });
+				JObject player_obj = (JObject)JToken.ReadFrom(new JsonTextReader(jsonfile));
+				var tourCode = player_obj["plrs"][0]["years"][0]["tours"][0]["tourCodeUC"].ToString();
+				if (tourCode == "R")
 				{
-					Console.WriteLine("Reading Stats from player file {0}", Path.GetFileName(filepath));
-					JObject player_obj = (JObject)JToken.ReadFrom(new JsonTextReader(jsonfile));
-					var tourCode = player_obj["plrs"][0]["years"][0]["tours"][0]["tourCodeUC"].ToString();
-					if (tourCode == "R")
+					var all_stats = player_obj["plrs"][0]["years"][0]["tours"][0]["statCats"];
+					var length = all_stats.Count();
+					for (int i = 0; i < length; ++i)
 					{
-						var all_stats = player_obj["plrs"][0]["years"][0]["tours"][0]["statCats"];
-						var length = all_stats.Count();
-						for (int i = 0; i < length; ++i)
+						foreach (JObject stat in all_stats[i]["stats"])
 						{
-							foreach (JObject stat in all_stats[i]["stats"])
-							{
-								f(_data, stat);
-							}
+							f(_data, stat);
 						}
 					}
 				}
-				catch (JsonReaderException)
-				{
-					Console.WriteLine("File was not in propoer JSON format: {0}", Path.GetFileName(filepath));
-				}
+
 			}
 			return;
 		}
+
+		protected virtual void OnPopulationAttempt(PopulatingStatsEventArgs e)
+		{
+			EventHandler<PopulatingStatsEventArgs> handler = PopulatingPlayer;
+			if (handler != null)
+			{
+				handler(this, e);
+			}
+		}
+	}
+
+	public class PopulatingStatsEventArgs : EventArgs
+	{
+		public string Message { get; set; }
+		public DateTime TimePopulated { get; set; }
+	}
+
+	public class PopulatingStatsErrorEventArgs : EventArgs
+	{
+		public string Message { get; set; }
+		public DateTime TimeError { get; set; }
+		public DirectoryInfo ErrorDirectory { get; set; }
 	}
 }

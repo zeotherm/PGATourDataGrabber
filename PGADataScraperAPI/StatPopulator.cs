@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualBasic.FileIO;
+using Newtonsoft.Json;
 using PGADataScaper.API.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,9 @@ namespace PGADataScaper.API
 		private readonly string _working_directory;
 		private readonly IJSONSerializer _serializer;
 		private readonly IPlayerGather _pg;
+
+		public event EventHandler<PopulatingStatsEventArgs> PopulatingAttempt;
+		public event EventHandler<PopulatingStatsErrorEventArgs> PopulatingError;
 
 		public StatPopulator(string w, IJSONSerializer s, IPlayerGather pg)
 		{
@@ -29,8 +33,15 @@ namespace PGADataScaper.API
 			{
 				if (File.Exists(Path.Combine(_working_directory, player.FileName)))
 				{
-					var statDict = new StatisticsDictionary(_working_directory, _serializer).PopulateWithValuesForPlayer(player.FileName);
-					stat_list.Add(new PlayerStats() { player = player, stats = statDict.Select(item => item.Value).OrderBy(n => n.Name).ToList() });
+					var statDict = new StatisticsDictionary(_working_directory, _serializer);
+					statDict.PopulatingPlayer += PopulatingAttempt;
+					try
+					{
+						stat_list.Add(new PlayerStats() { player = player, stats = statDict.PopulateWithValuesForPlayer(player.FileName).Select(item => item.Value).OrderBy(n => n.Name).ToList() });
+					} catch (JsonReaderException)
+					{
+						OnPopulationFailure(new PopulatingStatsErrorEventArgs { Message = $"File was not in proper JSON format: {player.FileName}", TimeError = DateTime.Now, ErrorDirectory = new DirectoryInfo(_working_directory) });
+					}
 				}
 			}
 
@@ -53,6 +64,15 @@ namespace PGADataScaper.API
 				}
 			}
 			return stat_list;
+		}
+
+		protected virtual void OnPopulationFailure(PopulatingStatsErrorEventArgs e)
+		{
+			EventHandler<PopulatingStatsErrorEventArgs> handler = PopulatingError;
+			if (handler != null)
+			{
+				handler(this, e);
+			}
 		}
 	}
 }
