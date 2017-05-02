@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGADataScaper", "PGADataScaper\PGADataScaper.csproj", "{CBA3E98A-DF7C-4081-89BB-9AEB102BA366}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGADataScraperAPI", "PGADataScraperAPI\PGADataScraperAPI.csproj", "{895079AD-2026-478F-AAFD-0E7DD20EA359}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGAAnalyticsWPF", "PGAAnalyticsWPF\PGAAnalyticsWPF.csproj", "{BFAA61E6-767C-45AA-8CE4-121D597A7802}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGAAnalyticsWinForms", "PGAAnalyticsWinForms\PGAAnalyticsWinForms.csproj", "{D23D8374-7411-4DC9-8F30-83B84E2137EA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{BFAA61E6-767C-45AA-8CE4-121D597A7802}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BFAA61E6-767C-45AA-8CE4-121D597A7802}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BFAA61E6-767C-45AA-8CE4-121D597A7802}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D23D8374-7411-4DC9-8F30-83B84E2137EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D23D8374-7411-4DC9-8F30-83B84E2137EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D23D8374-7411-4DC9-8F30-83B84E2137EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D23D8374-7411-4DC9-8F30-83B84E2137EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

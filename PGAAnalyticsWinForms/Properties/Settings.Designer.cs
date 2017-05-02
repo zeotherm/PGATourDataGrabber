@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PGAAnalyticsUI.Properties
+namespace PGAAnalyticsWinForms.Properties
 {
 
 

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("PGAAnalyticsUI")]
+[assembly: AssemblyTitle("PGAAnalyticsWinForms")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("PGAAnalyticsUI")]
+[assembly: AssemblyProduct("PGAAnalyticsWinForms")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("d39a8d6b-3e10-4120-bac3-2b223706e77d")]
+[assembly: Guid("d23d8374-7411-4dc9-8f30-83b84e2137ea")]
 
 // Version information for an assembly consists of the following four values:
 //
