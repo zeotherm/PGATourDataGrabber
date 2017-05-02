@@ -9,5 +9,6 @@ namespace PGADataScaper.API.Interfaces
 	public interface IPlayerGather
 	{
 		IEnumerable<Player> ReadPlayerList();
+		int Count();
 	}
 }

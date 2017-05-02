@@ -3,6 +3,7 @@ using System;
 using System.Threading.Tasks;
 using System.IO;
 using System.Net;
+using System.Threading;
 
 namespace PGADataScaper.API
 {
@@ -11,6 +12,8 @@ namespace PGADataScaper.API
 		private readonly WebClient wc;
 		private DirectoryInfo root_di, data_di;
 		private readonly IPlayerGather _pg;
+		private readonly IProgress<int> _progress;
+		private readonly CancellationToken _ct;
 		public event EventHandler<DownloadingPlayerEventArgs> DownloadingPlayer;
 		public event EventHandler<WritingPlayerEventArgs> WritingPlayer;
 		public event EventHandler<DownloadingPlayerErrorEventArgs> DownloadPlayerError;
@@ -18,6 +21,17 @@ namespace PGADataScaper.API
 			root_di = new DirectoryInfo(root);
 			wc = new WebClient();
 			_pg = pg;
+			_progress = null;
+			_ct = CancellationToken.None;
+		}
+
+		public PlayerWebDataGather(string root, IPlayerGather pg, IProgress<int> prog, CancellationToken ct)
+		{ // Root is the Desktop\PGA Stats directory which holds Players.xml and the statCat.json file
+			root_di = new DirectoryInfo(root);
+			wc = new WebClient();
+			_pg = pg;
+			_progress = prog;
+			_ct = ct;
 		}
 
 		public async Task GatherAndWriteAllPlayerStats() {
@@ -27,12 +41,16 @@ namespace PGADataScaper.API
 			} else {
 				data_di = new DirectoryInfo(path);
 			}
+			var playersProcessed = 0;
 			foreach (var player in _pg.ReadPlayerList()) {
 				try {
 					await WritePlayerData(player, await GatherPlayerData(player));
 				} catch (WebException) {
 					OnPlayerDownloadFailed( new DownloadingPlayerErrorEventArgs { Message = $"An error occured; the program could not download player data: {player.FullName}", TimeError = DateTime.Now, ErrorDirectory = data_di });
+				} finally {
+					_progress?.Report(++playersProcessed);
 				}
+				_ct.ThrowIfCancellationRequested();
 			}
 		}
 
