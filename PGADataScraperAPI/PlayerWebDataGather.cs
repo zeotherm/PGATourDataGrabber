@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Net;
 using System.Threading;
+using System.Collections.Generic;
 
 namespace PGADataScaper.API
 {
@@ -14,6 +15,7 @@ namespace PGADataScaper.API
 		private readonly IPlayerGather _pg;
 		private readonly IProgress<int> _progress;
 		private readonly CancellationToken _ct;
+		private readonly List<string> _error_names;
 		public event EventHandler<DownloadingPlayerEventArgs> DownloadingPlayer;
 		public event EventHandler<WritingPlayerEventArgs> WritingPlayer;
 		public event EventHandler<DownloadingPlayerErrorEventArgs> DownloadPlayerError;
@@ -23,6 +25,7 @@ namespace PGADataScaper.API
 			_pg = pg;
 			_progress = null;
 			_ct = CancellationToken.None;
+			_error_names = new List<string>();
 		}
 
 		public PlayerWebDataGather(string root, IPlayerGather pg, IProgress<int> prog, CancellationToken ct)
@@ -32,6 +35,7 @@ namespace PGADataScaper.API
 			_pg = pg;
 			_progress = prog;
 			_ct = ct;
+			_error_names = new List<string>();
 		}
 
 		public async Task GatherAndWriteAllPlayerStats() {
@@ -42,9 +46,12 @@ namespace PGADataScaper.API
 				data_di = new DirectoryInfo(path);
 			}
 			var playersProcessed = 0;
+			PopulateErrorList();
 			foreach (var player in _pg.ReadPlayerList()) {
 				try {
-					await WritePlayerData(player, await GatherPlayerData(player));
+					if (!File.Exists(Path.Combine(data_di.FullName, player.FileName)) && !_error_names.Contains(player.FullName)) { // TODO: Check if an error file exists and parse out missing players to do similar checks
+						await WritePlayerData(player, await GatherPlayerData(player));
+					}
 				} catch (WebException) {
 					OnPlayerDownloadFailed( new DownloadingPlayerErrorEventArgs { Message = $"An error occured; the program could not download player data: {player.FullName}", TimeError = DateTime.Now, ErrorDirectory = data_di });
 				} finally {
@@ -52,6 +59,19 @@ namespace PGADataScaper.API
 				}
 				_ct.ThrowIfCancellationRequested();
 			}
+		}
+
+		private void PopulateErrorList()
+		{
+			var errfile = Path.Combine(data_di.FullName, "error.log");
+			if ( File.Exists(errfile)) {
+				var lines = File.ReadAllLines(errfile);
+				foreach( var line in lines)
+				{
+					if( !String.IsNullOrWhiteSpace(line)) _error_names.Add(line.Substring(line.LastIndexOf(':')+1).Trim());
+				}
+			}
+			return;
 		}
 
 		private async Task WritePlayerData( Player p, string statData) {
