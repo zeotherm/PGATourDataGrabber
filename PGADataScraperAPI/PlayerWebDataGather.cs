@@ -70,29 +70,17 @@ namespace PGADataScaper.API
 
 		protected virtual void OnPlayerDownloadAttempt(DownloadingPlayerEventArgs e)
 		{
-			EventHandler<DownloadingPlayerEventArgs> handler = DownloadingPlayer;
-			if( handler != null)
-			{
-				handler(this, e);
-			}
+			DownloadingPlayer?.Invoke(this, e);
 		}
 
 		protected virtual void OnPlayerWriteAttempt(WritingPlayerEventArgs e )
 		{
-			EventHandler<WritingPlayerEventArgs> handler = WritingPlayer;
-			if( handler != null)
-			{
-				handler(this, e);
-			}
+			WritingPlayer?.Invoke(this, e);
 		}
 
 		protected virtual void OnPlayerDownloadFailed(DownloadingPlayerErrorEventArgs e)
 		{
-			EventHandler<DownloadingPlayerErrorEventArgs> handler = DownloadPlayerError;
-			if (handler != null)
-			{
-				handler(this, e);
-			}
+			DownloadPlayerError?.Invoke(this, e);
 		}
 	}
 

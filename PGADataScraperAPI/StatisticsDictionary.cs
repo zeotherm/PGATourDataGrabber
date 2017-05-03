@@ -145,11 +145,7 @@ namespace PGADataScaper.API
 
 		protected virtual void OnPopulationAttempt(PopulatingStatsEventArgs e)
 		{
-			EventHandler<PopulatingStatsEventArgs> handler = PopulatingPlayer;
-			if (handler != null)
-			{
-				handler(this, e);
-			}
+			PopulatingPlayer?.Invoke(this, e);
 		}
 	}
 
