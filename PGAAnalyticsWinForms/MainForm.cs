@@ -97,10 +97,7 @@ namespace PGAAnalyticsWinForms
 				web_gather.WritingPlayer += WritePlayerNotice;
 
 				await web_gather.GatherAndWriteAllPlayerStats();
-				//await RunGather(PlayerInfo, new Progress<int>(v => {
-				//	progressBar1.Value = v * 100 / PlayerInfo.Count();
-				//	progressLabel.Text = $"{v}/{PlayerInfo.Count()}";
-				//}), cts.Token);
+
 			} catch( OperationCanceledException) {
 				ReportErrorToTextBox("Operation cancelled at user request");
 				return;
@@ -132,16 +129,6 @@ namespace PGAAnalyticsWinForms
 				}
 			}
 			stopButton.Enabled = false;
-		}
-
-		private async Task RunGather(IPlayerGather pg, IProgress<int> prog, CancellationToken ct)
-		{
-			var web_gather = new PlayerWebDataGather(DataDir, pg, prog, ct);
-			web_gather.DownloadingPlayer += DownloadPlayerNotice;
-			web_gather.DownloadPlayerError += WritePlayerError;
-			web_gather.WritingPlayer += WritePlayerNotice;
-
-			await web_gather.GatherAndWriteAllPlayerStats();
 		}
 
 		private void stopButton_Click(object sender, EventArgs e)
