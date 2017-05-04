@@ -28,71 +28,115 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.statsCheckBox = new System.Windows.Forms.CheckedListBox();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.listView1 = new System.Windows.Forms.ListView();
 			this.btnCalculate = new System.Windows.Forms.Button();
+			this.groupBox2 = new System.Windows.Forms.GroupBox();
+			this.unselectedList = new System.Windows.Forms.ListBox();
+			this.selectedList = new System.Windows.Forms.ListBox();
+			this.selectButton = new System.Windows.Forms.Button();
+			this.deselectButton = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
+			this.groupBox2.SuspendLayout();
 			this.SuspendLayout();
-			// 
-			// statsCheckBox
-			// 
-			this.statsCheckBox.FormattingEnabled = true;
-			this.statsCheckBox.Location = new System.Drawing.Point(12, 12);
-			this.statsCheckBox.Name = "statsCheckBox";
-			this.statsCheckBox.Size = new System.Drawing.Size(254, 229);
-			this.statsCheckBox.TabIndex = 0;
-			this.statsCheckBox.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.statsCheckBox_ItemCheck);
 			// 
 			// groupBox1
 			// 
-			this.groupBox1.Controls.Add(this.listView1);
-			this.groupBox1.Location = new System.Drawing.Point(287, 12);
+			this.groupBox1.Controls.Add(this.selectedList);
+			this.groupBox1.Location = new System.Drawing.Point(383, 15);
+			this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(227, 200);
+			this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.groupBox1.Size = new System.Drawing.Size(303, 280);
 			this.groupBox1.TabIndex = 1;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Selected Stats";
 			// 
-			// listView1
-			// 
-			this.listView1.Location = new System.Drawing.Point(14, 25);
-			this.listView1.Name = "listView1";
-			this.listView1.Size = new System.Drawing.Size(202, 160);
-			this.listView1.Sorting = System.Windows.Forms.SortOrder.Ascending;
-			this.listView1.TabIndex = 0;
-			this.listView1.UseCompatibleStateImageBehavior = false;
-			this.listView1.View = System.Windows.Forms.View.List;
-			// 
 			// btnCalculate
 			// 
-			this.btnCalculate.Location = new System.Drawing.Point(439, 218);
+			this.btnCalculate.Location = new System.Drawing.Point(586, 363);
+			this.btnCalculate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.btnCalculate.Name = "btnCalculate";
-			this.btnCalculate.Size = new System.Drawing.Size(75, 23);
+			this.btnCalculate.Size = new System.Drawing.Size(100, 28);
 			this.btnCalculate.TabIndex = 2;
 			this.btnCalculate.Text = "Calculate";
 			this.btnCalculate.UseVisualStyleBackColor = true;
 			// 
+			// groupBox2
+			// 
+			this.groupBox2.Controls.Add(this.unselectedList);
+			this.groupBox2.Location = new System.Drawing.Point(16, 13);
+			this.groupBox2.Name = "groupBox2";
+			this.groupBox2.Size = new System.Drawing.Size(303, 282);
+			this.groupBox2.TabIndex = 3;
+			this.groupBox2.TabStop = false;
+			this.groupBox2.Text = "Unselected Stats";
+			// 
+			// unselectedList
+			// 
+			this.unselectedList.FormattingEnabled = true;
+			this.unselectedList.ItemHeight = 16;
+			this.unselectedList.Location = new System.Drawing.Point(14, 27);
+			this.unselectedList.Name = "unselectedList";
+			this.unselectedList.Size = new System.Drawing.Size(269, 228);
+			this.unselectedList.TabIndex = 0;
+			this.unselectedList.SelectedIndexChanged += new System.EventHandler(this.unselectedList_SelectedIndexChanged);
+			// 
+			// selectedList
+			// 
+			this.selectedList.FormattingEnabled = true;
+			this.selectedList.ItemHeight = 16;
+			this.selectedList.Location = new System.Drawing.Point(10, 26);
+			this.selectedList.Name = "selectedList";
+			this.selectedList.Size = new System.Drawing.Size(277, 228);
+			this.selectedList.TabIndex = 0;
+			this.selectedList.SelectedIndexChanged += new System.EventHandler(this.selectedList_SelectedIndexChanged);
+			// 
+			// selectButton
+			// 
+			this.selectButton.Location = new System.Drawing.Point(325, 105);
+			this.selectButton.Name = "selectButton";
+			this.selectButton.Size = new System.Drawing.Size(51, 34);
+			this.selectButton.TabIndex = 4;
+			this.selectButton.Text = ">>>";
+			this.selectButton.UseVisualStyleBackColor = true;
+			this.selectButton.Click += new System.EventHandler(this.selectButton_Click);
+			// 
+			// deselectButton
+			// 
+			this.deselectButton.Location = new System.Drawing.Point(325, 175);
+			this.deselectButton.Name = "deselectButton";
+			this.deselectButton.Size = new System.Drawing.Size(51, 30);
+			this.deselectButton.TabIndex = 5;
+			this.deselectButton.Text = "<<<";
+			this.deselectButton.UseVisualStyleBackColor = true;
+			this.deselectButton.Click += new System.EventHandler(this.deselectButton_Click);
+			// 
 			// StatSelectionForm
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(534, 261);
+			this.ClientSize = new System.Drawing.Size(712, 404);
+			this.Controls.Add(this.deselectButton);
+			this.Controls.Add(this.selectButton);
+			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.btnCalculate);
 			this.Controls.Add(this.groupBox1);
-			this.Controls.Add(this.statsCheckBox);
+			this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.Name = "StatSelectionForm";
 			this.Text = "StatSelectionForm";
 			this.groupBox1.ResumeLayout(false);
+			this.groupBox2.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
 
 		#endregion
-
-		private System.Windows.Forms.CheckedListBox statsCheckBox;
 		private System.Windows.Forms.GroupBox groupBox1;
-		private System.Windows.Forms.ListView listView1;
 		private System.Windows.Forms.Button btnCalculate;
+		private System.Windows.Forms.GroupBox groupBox2;
+		private System.Windows.Forms.ListBox selectedList;
+		private System.Windows.Forms.ListBox unselectedList;
+		private System.Windows.Forms.Button selectButton;
+		private System.Windows.Forms.Button deselectButton;
 	}
 }

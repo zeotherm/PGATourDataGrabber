@@ -22,16 +22,41 @@ namespace PGAAnalyticsWinForms
 
 			foreach ( var statname in _ps.Take(1).First().stats.Select(s => s.Name).OrderBy(s => s))
 			{
-				statsCheckBox.Items.Add(statname, false);
+				unselectedList.Items.Add(statname);
 			}
+			selectButton.Enabled = false;
+			deselectButton.Enabled = false;
 		}
 
 		private void statsCheckBox_ItemCheck(object sender, ItemCheckEventArgs e)
 		{
-			if( e.CurrentValue == CheckState.Unchecked)
-			{
-				listView1.Items.Add(new ListViewItem(statsCheckBox.Items[e.Index].ToString()));
-			}
+			
+		}
+
+		private void unselectedList_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			selectButton.Enabled = true;
+		}
+
+		private void selectedList_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			deselectButton.Enabled = true;
+		}
+
+		private void selectButton_Click(object sender, EventArgs e)
+		{
+			var index = unselectedList.SelectedIndex;
+			selectedList.Items.Add(unselectedList.Items[index]);
+			unselectedList.Items.RemoveAt(index);
+			selectButton.Enabled = false;
+		}
+
+		private void deselectButton_Click(object sender, EventArgs e)
+		{
+			var index = selectedList.SelectedIndex;
+			unselectedList.Items.Add(selectedList.Items[index]);
+			selectedList.Items.RemoveAt(index);
+			deselectButton.Enabled = false;
 		}
 	}
 }
