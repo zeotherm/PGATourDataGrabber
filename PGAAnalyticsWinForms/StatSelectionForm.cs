@@ -58,5 +58,13 @@ namespace PGAAnalyticsWinForms
 			selectedList.Items.RemoveAt(index);
 			deselectButton.Enabled = false;
 		}
+
+		private void btnCalculate_Click(object sender, EventArgs e)
+		{
+			this.Hide();
+			var Top10ListSummary = new Top10Lists();
+			Top10ListSummary.Closed += (s, args) => this.Close();
+			Top10ListSummary.Show();
+		}
 	}
 }

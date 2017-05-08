@@ -64,6 +64,12 @@
     <Compile Include="StatSelectionForm.Designer.cs">
       <DependentUpon>StatSelectionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Top10Lists.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Top10Lists.Designer.cs">
+      <DependentUpon>Top10Lists.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -74,6 +80,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StatSelectionForm.resx">
       <DependentUpon>StatSelectionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Top10Lists.resx">
+      <DependentUpon>Top10Lists.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

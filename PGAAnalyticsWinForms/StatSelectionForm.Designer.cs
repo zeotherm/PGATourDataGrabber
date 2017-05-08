@@ -60,6 +60,7 @@
 			this.btnCalculate.TabIndex = 2;
 			this.btnCalculate.Text = "Calculate";
 			this.btnCalculate.UseVisualStyleBackColor = true;
+			this.btnCalculate.Click += new System.EventHandler(this.btnCalculate_Click);
 			// 
 			// groupBox2
 			// 
