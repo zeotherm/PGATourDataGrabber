@@ -122,14 +122,14 @@ namespace PGAAnalyticsWinForms
 
 			nextButton.Enabled = true;
 			_ps = all_player_stats.Where(p => p.IsDKSet()).Select(p => p);
-			//using (var output = new StreamWriter(Path.Combine(WorkingDirectory, "results-dkonly.csv")))
-			//{
-			//	output.WriteLine(all_player_stats[0].ToCSVHeaderLine());
-			//	foreach (var p in _ps)
-			//	{
-			//		output.WriteLine(p.ToCSVLineEntry());
-			//	}
-			//}
+			using (var output = new StreamWriter(Path.Combine(WorkingDirectory, "results-dkonly.csv")))
+			{
+				output.WriteLine(all_player_stats[0].ToCSVHeaderLine());
+				foreach (var p in all_player_stats.Where(p => p.IsDKSet()).Select(p => p))
+				{
+					output.WriteLine(p.ToCSVLineEntry());
+				}
+			}
 			stopButton.Enabled = false;
 		}
 

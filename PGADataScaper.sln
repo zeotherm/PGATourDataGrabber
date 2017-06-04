@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGAAnalyticsWPF", "PGAAnaly
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGAAnalyticsWinForms", "PGAAnalyticsWinForms\PGAAnalyticsWinForms.csproj", "{D23D8374-7411-4DC9-8F30-83B84E2137EA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResultsParser", "ResultsParser\ResultsParser.csproj", "{5065C3F5-E3CD-4A5F-B9CE-E9F772F4593B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{D23D8374-7411-4DC9-8F30-83B84E2137EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D23D8374-7411-4DC9-8F30-83B84E2137EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D23D8374-7411-4DC9-8F30-83B84E2137EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5065C3F5-E3CD-4A5F-B9CE-E9F772F4593B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5065C3F5-E3CD-4A5F-B9CE-E9F772F4593B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5065C3F5-E3CD-4A5F-B9CE-E9F772F4593B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5065C3F5-E3CD-4A5F-B9CE-E9F772F4593B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

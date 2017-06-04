@@ -4,15 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{895079AD-2026-478F-AAFD-0E7DD20EA359}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{5065C3F5-E3CD-4A5F-B9CE-E9F772F4593B}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PGADataScraper.API</RootNamespace>
-    <AssemblyName>PGADataScraperAPI</AssemblyName>
+    <RootNamespace>ResultsParser</RootNamespace>
+    <AssemblyName>ResultsParser</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -30,7 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -45,23 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CombinatoricsExtension.cs" />
-    <Compile Include="Interfaces\IJSONSerializer.cs" />
-    <Compile Include="Interfaces\IPlayerGather.cs" />
-    <Compile Include="Interfaces\IPlayerWebDataGather.cs" />
-    <Compile Include="Interfaces\IStatisticsDictionary.cs" />
-    <Compile Include="Interfaces\IStatPopulator.cs" />
-    <Compile Include="Player.cs" />
-    <Compile Include="PlayerGather.cs" />
-    <Compile Include="PlayerStats.cs" />
-    <Compile Include="PlayerWebDataGather.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StatDictSerializer.cs" />
-    <Compile Include="StatisticsDictionary.cs" />
-    <Compile Include="StatPopulator.cs" />
-    <Compile Include="WeekOfYearExtension.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
