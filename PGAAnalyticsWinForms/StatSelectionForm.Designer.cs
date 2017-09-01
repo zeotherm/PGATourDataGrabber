@@ -29,10 +29,10 @@
 		private void InitializeComponent()
 		{
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.selectedList = new System.Windows.Forms.ListBox();
 			this.btnCalculate = new System.Windows.Forms.Button();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.unselectedList = new System.Windows.Forms.ListBox();
-			this.selectedList = new System.Windows.Forms.ListBox();
 			this.selectButton = new System.Windows.Forms.Button();
 			this.deselectButton = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
@@ -43,18 +43,29 @@
 			// 
 			this.groupBox1.Controls.Add(this.selectedList);
 			this.groupBox1.Location = new System.Drawing.Point(383, 15);
-			this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
 			this.groupBox1.Size = new System.Drawing.Size(303, 280);
 			this.groupBox1.TabIndex = 1;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Selected Stats";
 			// 
+			// selectedList
+			// 
+			this.selectedList.FormattingEnabled = true;
+			this.selectedList.ItemHeight = 16;
+			this.selectedList.Location = new System.Drawing.Point(10, 26);
+			this.selectedList.Name = "selectedList";
+			this.selectedList.Size = new System.Drawing.Size(277, 228);
+			this.selectedList.TabIndex = 0;
+			this.selectedList.SelectedIndexChanged += new System.EventHandler(this.selectedList_SelectedIndexChanged);
+			this.selectedList.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.selectedList_MouseDoubleClick);
+			// 
 			// btnCalculate
 			// 
 			this.btnCalculate.Location = new System.Drawing.Point(586, 363);
-			this.btnCalculate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnCalculate.Margin = new System.Windows.Forms.Padding(4);
 			this.btnCalculate.Name = "btnCalculate";
 			this.btnCalculate.Size = new System.Drawing.Size(100, 28);
 			this.btnCalculate.TabIndex = 2;
@@ -81,16 +92,6 @@
 			this.unselectedList.Size = new System.Drawing.Size(269, 228);
 			this.unselectedList.TabIndex = 0;
 			this.unselectedList.SelectedIndexChanged += new System.EventHandler(this.unselectedList_SelectedIndexChanged);
-			// 
-			// selectedList
-			// 
-			this.selectedList.FormattingEnabled = true;
-			this.selectedList.ItemHeight = 16;
-			this.selectedList.Location = new System.Drawing.Point(10, 26);
-			this.selectedList.Name = "selectedList";
-			this.selectedList.Size = new System.Drawing.Size(277, 228);
-			this.selectedList.TabIndex = 0;
-			this.selectedList.SelectedIndexChanged += new System.EventHandler(this.selectedList_SelectedIndexChanged);
 			// 
 			// selectButton
 			// 
@@ -122,7 +123,7 @@
 			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.btnCalculate);
 			this.Controls.Add(this.groupBox1);
-			this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Margin = new System.Windows.Forms.Padding(4);
 			this.Name = "StatSelectionForm";
 			this.Text = "StatSelectionForm";
 			this.groupBox1.ResumeLayout(false);

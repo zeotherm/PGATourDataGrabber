@@ -50,6 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AscendingDescendingSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AscendingDescendingSelector.Designer.cs">
+      <DependentUpon>AscendingDescendingSelector.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +76,9 @@
     <Compile Include="Top10Lists.Designer.cs">
       <DependentUpon>Top10Lists.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AscendingDescendingSelector.resx">
+      <DependentUpon>AscendingDescendingSelector.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -62,9 +62,24 @@ namespace PGAAnalyticsWinForms
 		private void btnCalculate_Click(object sender, EventArgs e)
 		{
 			this.Hide();
-			var Top10ListSummary = new Top10Lists();
+			var vals = new List<string>();
+			foreach( var sel in selectedList.Items) {
+				vals.Add(sel.ToString());
+			}
+			var Top10ListSummary = new Top10Lists(_ps, vals);
 			Top10ListSummary.Closed += (s, args) => this.Close();
 			Top10ListSummary.Show();
+		}
+
+		private void selectedList_MouseDoubleClick(object sender, MouseEventArgs e) {
+			int index = this.selectedList.IndexFromPoint(e.Location);
+			if (index != ListBox.NoMatches) {
+				var sortDir = new AscendingDescendingSelector();
+				if( sortDir.ShowDialog() == DialogResult.OK) {
+					selectedList.Items[index] += sortDir.Direction == SortDir.ASC ? " {L->H}" : " {H->L}";
+				}
+				sortDir.Close();
+			}
 		}
 	}
 }
