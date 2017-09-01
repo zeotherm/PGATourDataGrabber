@@ -19,7 +19,42 @@ namespace PGADataScaper.API
 	public class StatValue
 	{
 		public int Rank { get; set; }
-		public string Value { get; set; }
+		private string _value;
+		public string Value {
+			get { return _value; }
+			set {
+				_value = value;
+				SetSortValue(value);
+			}
+		}
+
+		private void SetSortValue(string entry) {
+			double temp = 0.0;
+			if (double.TryParse(entry, out temp)) {
+				SortValue = temp;
+				return;
+			} else if (entry.Contains("$")) {
+				SortValue = double.Parse(entry.Replace("$", string.Empty));
+				return;
+			} else if (entry.Contains("'")) { // it is a X'Y" needs to be converted to X.Y ft
+				var ft_inch = entry.Split(new char[] { '\"', '\'' }, StringSplitOptions.RemoveEmptyEntries);
+				var ft = double.Parse(ft_inch[0]);
+				var inch = double.Parse(ft_inch[1]);
+				SortValue = ft + inch / 12.0;
+				return;
+			} else if (entry.Contains("%")) { // return the value / 100
+				SortValue = double.Parse(entry.Replace("%", string.Empty));
+				return;
+			} else if (entry.Contains("T")) { // strip off the T and return their place
+				SortValue = double.Parse(entry.Replace("T", string.Empty));
+				return;
+			} else {
+				SortValue = double.NaN;
+				return;
+			}
+		}
+
+		public double SortValue { get; private set; }
 
 		public StatValue() {
 			Rank = -99;

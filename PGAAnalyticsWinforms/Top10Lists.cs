@@ -40,6 +40,24 @@ namespace PGAAnalyticsWinForms
 			for( int indx = tabControl1.TabCount-1; indx >= tabindex; indx--) {
 				tabControl1.TabPages.RemoveAt(indx);
 			}
+
+			var t10_cat = t10.First();
+			// create a list of the top 10 players in a given category
+			var player_single_stat = _ps.Select(p => new { Name = p.player.FullName,
+				Stat = p.stats.Where(s => s.Name == t10_cat.StatName).Select(s => s.Info).First()
+			});
+			IEnumerable<Tuple<string, string>> NameDisplayPairData;
+			if (t10_cat.Direction == SortDir.ASC) {
+				NameDisplayPairData = player_single_stat.OrderBy(t => t.Stat.SortValue).Take(10).Select(n => new Tuple<string, string>(n.Name, n.Stat.Value));
+			} else {
+				NameDisplayPairData = player_single_stat.OrderByDescending(t => t.Stat.SortValue).Take(10).Select(n => new Tuple<string, string>(n.Name, n.Stat.Value));
+			}
+			foreach (var ndpd in NameDisplayPairData) {
+				int n = dataGridView1.Rows.Add();
+				dataGridView1.Rows[n].Cells[0].Value = ndpd.Item1;
+				dataGridView1.Rows[n].Cells[1].Value = ndpd.Item2;
+			}
+
 		}
 	}
 
