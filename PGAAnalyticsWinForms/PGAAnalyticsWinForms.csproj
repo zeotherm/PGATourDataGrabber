@@ -56,6 +56,12 @@
     <Compile Include="AscendingDescendingSelector.Designer.cs">
       <DependentUpon>AscendingDescendingSelector.cs</DependentUpon>
     </Compile>
+    <Compile Include="AvailablePlayersDisplayForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AvailablePlayersDisplayForm.Designer.cs">
+      <DependentUpon>AvailablePlayersDisplayForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +76,12 @@
     <Compile Include="StatSelectionForm.Designer.cs">
       <DependentUpon>StatSelectionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SummaryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SummaryForm.Designer.cs">
+      <DependentUpon>SummaryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Top10Lists.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +90,9 @@
     </Compile>
     <EmbeddedResource Include="AscendingDescendingSelector.resx">
       <DependentUpon>AscendingDescendingSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AvailablePlayersDisplayForm.resx">
+      <DependentUpon>AvailablePlayersDisplayForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -89,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StatSelectionForm.resx">
       <DependentUpon>StatSelectionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SummaryForm.resx">
+      <DependentUpon>SummaryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Top10Lists.resx">
       <DependentUpon>Top10Lists.cs</DependentUpon>

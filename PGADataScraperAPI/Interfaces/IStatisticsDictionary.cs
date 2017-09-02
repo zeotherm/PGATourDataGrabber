@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace PGADataScaper.API.Interfaces
-{
+namespace PGADataScraper.API.Interfaces {
 	public interface IStatisticsDictionary
 	{
 		Dictionary<string, StatItem> GenerateSkeleton();

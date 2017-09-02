@@ -1,12 +1,13 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using PGADataScaper.API.Interfaces;
+using PGADataScraper.API;
+using PGADataScraper.API.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace PGADataScaper.API
+namespace PGADataScraper.API
 {
 
 	public enum StatDictState { EMPTY, SHELL, FULL };

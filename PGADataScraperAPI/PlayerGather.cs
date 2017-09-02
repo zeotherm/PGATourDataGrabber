@@ -1,12 +1,11 @@
-﻿using PGADataScaper.API.Interfaces;
+﻿using PGADataScraper.API.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
 
-namespace PGADataScaper.API
-{
+namespace PGADataScraper.API {
 	public class PlayerGather : IPlayerGather
 	{
 		private readonly DirectoryInfo root_di;

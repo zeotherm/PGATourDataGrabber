@@ -1,12 +1,8 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace PGADataScaper.API
-{
+namespace PGADataScraper.API {
 	public class StatItem {
 		public string Name { get; set; }
 		public StatValue Info { get; set;}
@@ -70,8 +66,8 @@ namespace PGADataScaper.API
 	{
 		public Player player { get; set; }
 		public List<StatItem> stats { get; set; }
-		double Salary;
-		double Points;
+		public double Salary { get; private set; }
+		public double Points { get; private set; }
 		private bool DKSet = false;
 		public void AddDraftKingsStats( double s, double p) { Salary = s; Points = p; DKSet = true;  return; }
 		public bool IsDKSet() { return DKSet; }

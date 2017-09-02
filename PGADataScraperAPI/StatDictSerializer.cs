@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
-using PGADataScaper.API.Interfaces;
+using PGADataScraper.API.Interfaces;
 using System.Collections.Generic;
 using System.IO;
 
-namespace PGADataScaper.API
+namespace PGADataScraper.API
 {
 	public class StatDictSerializer : IJSONSerializer
 	{

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PGADataScaper.API.Interfaces
+namespace PGADataScraper.API.Interfaces
 {
 	public interface IPlayerGather
 	{

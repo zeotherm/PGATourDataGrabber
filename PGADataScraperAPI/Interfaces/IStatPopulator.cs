@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace PGADataScaper.API.Interfaces
+namespace PGADataScraper.API.Interfaces
 {
 	public interface IStatPopulator
 	{

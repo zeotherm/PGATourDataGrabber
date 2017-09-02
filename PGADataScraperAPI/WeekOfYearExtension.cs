@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace PGADataScaper.API
+namespace PGADataScraper.API
 {
 	public static class WeekOfYearExtension
 	{

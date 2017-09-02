@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace PGADataScaper.API
+namespace PGADataScraper.API
 {
 	public static class CombinatoricsExtension
 	{

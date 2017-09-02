@@ -39,20 +39,21 @@
 			this.Stat2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.tabPage3 = new System.Windows.Forms.TabPage();
 			this.dataGridView3 = new System.Windows.Forms.DataGridView();
-			this.tabPage4 = new System.Windows.Forms.TabPage();
-			this.tabPage5 = new System.Windows.Forms.TabPage();
-			this.tabPage6 = new System.Windows.Forms.TabPage();
 			this.Player3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Stat3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.tabPage4 = new System.Windows.Forms.TabPage();
 			this.dataGridView4 = new System.Windows.Forms.DataGridView();
 			this.Player4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Stat4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.tabPage5 = new System.Windows.Forms.TabPage();
 			this.dataGridView5 = new System.Windows.Forms.DataGridView();
 			this.Player5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Stat5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.tabPage6 = new System.Windows.Forms.TabPage();
 			this.dataGridView6 = new System.Windows.Forms.DataGridView();
 			this.Player6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Stat6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.button1 = new System.Windows.Forms.Button();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -61,10 +62,10 @@
 			this.tabPage3.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
 			this.tabPage4.SuspendLayout();
-			this.tabPage5.SuspendLayout();
-			this.tabPage6.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
+			this.tabPage5.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
+			this.tabPage6.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -76,21 +77,21 @@
 			this.tabControl1.Controls.Add(this.tabPage4);
 			this.tabControl1.Controls.Add(this.tabPage5);
 			this.tabControl1.Controls.Add(this.tabPage6);
-			this.tabControl1.Location = new System.Drawing.Point(9, 10);
-			this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
+			this.tabControl1.Location = new System.Drawing.Point(12, 12);
+			this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(418, 303);
+			this.tabControl1.Size = new System.Drawing.Size(557, 373);
 			this.tabControl1.TabIndex = 0;
 			// 
 			// tabPage1
 			// 
 			this.tabPage1.Controls.Add(this.dataGridView1);
-			this.tabPage1.Location = new System.Drawing.Point(4, 22);
-			this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
+			this.tabPage1.Location = new System.Drawing.Point(4, 25);
+			this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.tabPage1.Name = "tabPage1";
-			this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
-			this.tabPage1.Size = new System.Drawing.Size(410, 277);
+			this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+			this.tabPage1.Size = new System.Drawing.Size(549, 344);
 			this.tabPage1.TabIndex = 0;
 			this.tabPage1.Text = "tabPage1";
 			this.tabPage1.UseVisualStyleBackColor = true;
@@ -103,11 +104,13 @@
 			this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Player1,
             this.Stat1});
-			this.dataGridView1.Location = new System.Drawing.Point(5, 5);
+			this.dataGridView1.Location = new System.Drawing.Point(7, 6);
+			this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
 			this.dataGridView1.Name = "dataGridView1";
 			this.dataGridView1.ReadOnly = true;
-			this.dataGridView1.Size = new System.Drawing.Size(400, 267);
+			this.dataGridView1.Size = new System.Drawing.Size(533, 329);
 			this.dataGridView1.TabIndex = 0;
+			this.dataGridView1.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_RowHeaderMouseDoubleClick);
 			// 
 			// Player1
 			// 
@@ -124,11 +127,11 @@
 			// tabPage2
 			// 
 			this.tabPage2.Controls.Add(this.dataGridView2);
-			this.tabPage2.Location = new System.Drawing.Point(4, 22);
-			this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
+			this.tabPage2.Location = new System.Drawing.Point(4, 25);
+			this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.tabPage2.Name = "tabPage2";
-			this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
-			this.tabPage2.Size = new System.Drawing.Size(410, 277);
+			this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+			this.tabPage2.Size = new System.Drawing.Size(549, 344);
 			this.tabPage2.TabIndex = 1;
 			this.tabPage2.Text = "tabPage2";
 			this.tabPage2.UseVisualStyleBackColor = true;
@@ -141,11 +144,13 @@
 			this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Player2,
             this.Stat2});
-			this.dataGridView2.Location = new System.Drawing.Point(5, 5);
+			this.dataGridView2.Location = new System.Drawing.Point(7, 6);
+			this.dataGridView2.Margin = new System.Windows.Forms.Padding(4);
 			this.dataGridView2.Name = "dataGridView2";
 			this.dataGridView2.ReadOnly = true;
-			this.dataGridView2.Size = new System.Drawing.Size(400, 267);
+			this.dataGridView2.Size = new System.Drawing.Size(533, 329);
 			this.dataGridView2.TabIndex = 0;
+			this.dataGridView2.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView2_RowHeaderMouseDoubleClick);
 			// 
 			// Player2
 			// 
@@ -162,11 +167,11 @@
 			// tabPage3
 			// 
 			this.tabPage3.Controls.Add(this.dataGridView3);
-			this.tabPage3.Location = new System.Drawing.Point(4, 22);
-			this.tabPage3.Margin = new System.Windows.Forms.Padding(2);
+			this.tabPage3.Location = new System.Drawing.Point(4, 25);
+			this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.tabPage3.Name = "tabPage3";
-			this.tabPage3.Padding = new System.Windows.Forms.Padding(2);
-			this.tabPage3.Size = new System.Drawing.Size(410, 277);
+			this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+			this.tabPage3.Size = new System.Drawing.Size(549, 344);
 			this.tabPage3.TabIndex = 2;
 			this.tabPage3.Text = "tabPage3";
 			this.tabPage3.UseVisualStyleBackColor = true;
@@ -179,47 +184,13 @@
 			this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Player3,
             this.Stat3});
-			this.dataGridView3.Location = new System.Drawing.Point(5, 5);
+			this.dataGridView3.Location = new System.Drawing.Point(7, 6);
+			this.dataGridView3.Margin = new System.Windows.Forms.Padding(4);
 			this.dataGridView3.Name = "dataGridView3";
 			this.dataGridView3.ReadOnly = true;
-			this.dataGridView3.Size = new System.Drawing.Size(400, 267);
+			this.dataGridView3.Size = new System.Drawing.Size(533, 329);
 			this.dataGridView3.TabIndex = 0;
-			// 
-			// tabPage4
-			// 
-			this.tabPage4.Controls.Add(this.dataGridView4);
-			this.tabPage4.Location = new System.Drawing.Point(4, 22);
-			this.tabPage4.Margin = new System.Windows.Forms.Padding(2);
-			this.tabPage4.Name = "tabPage4";
-			this.tabPage4.Padding = new System.Windows.Forms.Padding(2);
-			this.tabPage4.Size = new System.Drawing.Size(410, 277);
-			this.tabPage4.TabIndex = 3;
-			this.tabPage4.Text = "tabPage4";
-			this.tabPage4.UseVisualStyleBackColor = true;
-			// 
-			// tabPage5
-			// 
-			this.tabPage5.Controls.Add(this.dataGridView5);
-			this.tabPage5.Location = new System.Drawing.Point(4, 22);
-			this.tabPage5.Margin = new System.Windows.Forms.Padding(2);
-			this.tabPage5.Name = "tabPage5";
-			this.tabPage5.Padding = new System.Windows.Forms.Padding(2);
-			this.tabPage5.Size = new System.Drawing.Size(410, 277);
-			this.tabPage5.TabIndex = 4;
-			this.tabPage5.Text = "tabPage5";
-			this.tabPage5.UseVisualStyleBackColor = true;
-			// 
-			// tabPage6
-			// 
-			this.tabPage6.Controls.Add(this.dataGridView6);
-			this.tabPage6.Location = new System.Drawing.Point(4, 22);
-			this.tabPage6.Margin = new System.Windows.Forms.Padding(2);
-			this.tabPage6.Name = "tabPage6";
-			this.tabPage6.Padding = new System.Windows.Forms.Padding(2);
-			this.tabPage6.Size = new System.Drawing.Size(410, 277);
-			this.tabPage6.TabIndex = 5;
-			this.tabPage6.Text = "tabPage6";
-			this.tabPage6.UseVisualStyleBackColor = true;
+			this.dataGridView3.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView3_RowHeaderMouseDoubleClick);
 			// 
 			// Player3
 			// 
@@ -233,6 +204,18 @@
 			this.Stat3.Name = "Stat3";
 			this.Stat3.ReadOnly = true;
 			// 
+			// tabPage4
+			// 
+			this.tabPage4.Controls.Add(this.dataGridView4);
+			this.tabPage4.Location = new System.Drawing.Point(4, 25);
+			this.tabPage4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+			this.tabPage4.Name = "tabPage4";
+			this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+			this.tabPage4.Size = new System.Drawing.Size(549, 344);
+			this.tabPage4.TabIndex = 3;
+			this.tabPage4.Text = "tabPage4";
+			this.tabPage4.UseVisualStyleBackColor = true;
+			// 
 			// dataGridView4
 			// 
 			this.dataGridView4.AllowUserToAddRows = false;
@@ -241,11 +224,13 @@
 			this.dataGridView4.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Player4,
             this.Stat4});
-			this.dataGridView4.Location = new System.Drawing.Point(5, 5);
+			this.dataGridView4.Location = new System.Drawing.Point(7, 6);
+			this.dataGridView4.Margin = new System.Windows.Forms.Padding(4);
 			this.dataGridView4.Name = "dataGridView4";
 			this.dataGridView4.ReadOnly = true;
-			this.dataGridView4.Size = new System.Drawing.Size(400, 267);
+			this.dataGridView4.Size = new System.Drawing.Size(533, 329);
 			this.dataGridView4.TabIndex = 0;
+			this.dataGridView4.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView4_RowHeaderMouseDoubleClick);
 			// 
 			// Player4
 			// 
@@ -259,6 +244,18 @@
 			this.Stat4.Name = "Stat4";
 			this.Stat4.ReadOnly = true;
 			// 
+			// tabPage5
+			// 
+			this.tabPage5.Controls.Add(this.dataGridView5);
+			this.tabPage5.Location = new System.Drawing.Point(4, 25);
+			this.tabPage5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+			this.tabPage5.Name = "tabPage5";
+			this.tabPage5.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+			this.tabPage5.Size = new System.Drawing.Size(549, 344);
+			this.tabPage5.TabIndex = 4;
+			this.tabPage5.Text = "tabPage5";
+			this.tabPage5.UseVisualStyleBackColor = true;
+			// 
 			// dataGridView5
 			// 
 			this.dataGridView5.AllowUserToAddRows = false;
@@ -267,11 +264,13 @@
 			this.dataGridView5.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Player5,
             this.Stat5});
-			this.dataGridView5.Location = new System.Drawing.Point(5, 5);
+			this.dataGridView5.Location = new System.Drawing.Point(7, 6);
+			this.dataGridView5.Margin = new System.Windows.Forms.Padding(4);
 			this.dataGridView5.Name = "dataGridView5";
 			this.dataGridView5.ReadOnly = true;
-			this.dataGridView5.Size = new System.Drawing.Size(400, 267);
+			this.dataGridView5.Size = new System.Drawing.Size(533, 329);
 			this.dataGridView5.TabIndex = 0;
+			this.dataGridView5.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView5_RowHeaderMouseDoubleClick);
 			// 
 			// Player5
 			// 
@@ -285,6 +284,18 @@
 			this.Stat5.Name = "Stat5";
 			this.Stat5.ReadOnly = true;
 			// 
+			// tabPage6
+			// 
+			this.tabPage6.Controls.Add(this.dataGridView6);
+			this.tabPage6.Location = new System.Drawing.Point(4, 25);
+			this.tabPage6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+			this.tabPage6.Name = "tabPage6";
+			this.tabPage6.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+			this.tabPage6.Size = new System.Drawing.Size(549, 344);
+			this.tabPage6.TabIndex = 5;
+			this.tabPage6.Text = "tabPage6";
+			this.tabPage6.UseVisualStyleBackColor = true;
+			// 
 			// dataGridView6
 			// 
 			this.dataGridView6.AllowUserToAddRows = false;
@@ -293,11 +304,13 @@
 			this.dataGridView6.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Player6,
             this.Stat6});
-			this.dataGridView6.Location = new System.Drawing.Point(5, 5);
+			this.dataGridView6.Location = new System.Drawing.Point(7, 6);
+			this.dataGridView6.Margin = new System.Windows.Forms.Padding(4);
 			this.dataGridView6.Name = "dataGridView6";
 			this.dataGridView6.ReadOnly = true;
-			this.dataGridView6.Size = new System.Drawing.Size(400, 267);
+			this.dataGridView6.Size = new System.Drawing.Size(533, 329);
 			this.dataGridView6.TabIndex = 0;
+			this.dataGridView6.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView6_RowHeaderMouseDoubleClick);
 			// 
 			// Player6
 			// 
@@ -311,13 +324,24 @@
 			this.Stat6.Name = "Stat6";
 			this.Stat6.ReadOnly = true;
 			// 
+			// button1
+			// 
+			this.button1.Location = new System.Drawing.Point(420, 390);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(145, 39);
+			this.button1.TabIndex = 1;
+			this.button1.Text = "Display Players";
+			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.button1_Click);
+			// 
 			// Top10Lists
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(457, 337);
+			this.ClientSize = new System.Drawing.Size(578, 441);
+			this.Controls.Add(this.button1);
 			this.Controls.Add(this.tabControl1);
-			this.Margin = new System.Windows.Forms.Padding(2);
+			this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.Name = "Top10Lists";
 			this.Text = "Top10Lists";
 			this.Load += new System.EventHandler(this.Top10Lists_Load);
@@ -329,10 +353,10 @@
 			this.tabPage3.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
 			this.tabPage4.ResumeLayout(false);
-			this.tabPage5.ResumeLayout(false);
-			this.tabPage6.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
+			this.tabPage5.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
+			this.tabPage6.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).EndInit();
 			this.ResumeLayout(false);
 
@@ -365,5 +389,6 @@
 		private System.Windows.Forms.DataGridView dataGridView6;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Player6;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Stat6;
+		private System.Windows.Forms.Button button1;
 	}
 }

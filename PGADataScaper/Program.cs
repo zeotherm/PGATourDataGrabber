@@ -1,5 +1,5 @@
-﻿using PGADataScaper.API;
-using PGADataScaper.API.Interfaces;
+﻿using PGADataScraper.API;
+using PGADataScraper.API.Interfaces;
 using System;
 using System.IO;
 using System.Linq;

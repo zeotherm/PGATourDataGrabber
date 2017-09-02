@@ -1,4 +1,4 @@
-﻿using PGADataScaper.API;
+﻿using PGADataScraper.API;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

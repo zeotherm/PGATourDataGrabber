@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace PGADataScaper.API.Interfaces
+namespace PGADataScraper.API.Interfaces
 {
 	public interface IPlayerWebDataGather
 	{
