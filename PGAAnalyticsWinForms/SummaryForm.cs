@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace PGAAnalyticsWinForms {
 	public partial class SummaryForm : Form {
-		private IEnumerable<IEnumerable<ScorablePlayer>> teams;
+		private Task<IEnumerable<IEnumerable<ScorablePlayer>>> teams;
 		private DataGridView[] dgvslots;
 		private int slot;
 		public SummaryForm(IEnumerable<ScorablePlayer> sps, IEnumerable<ScorablePlayer> keepers) {
@@ -36,17 +36,23 @@ namespace PGAAnalyticsWinForms {
 		}
 
 		private void SummaryForm_Load(object sender, EventArgs e) {
-			foreach( var team in teams) {
-				slot += 1;
-				foreach( var player in team) {
-					int n = dgvslots[slot].Rows.Add();
-					dgvslots[slot].Rows[n].Cells[0].Value = player.Name;
-					dgvslots[slot].Rows[n].Cells[1].Value = player.Salary;
-					dgvslots[slot].Rows[n].Cells[2].Value = player.Points;
+			progressBar1.Show();
+			teams.ContinueWith(((best_teams) => {
+				var best = best_teams.Result;
+				
+				foreach (var team in best) {
+					slot += 1;
+					foreach (var player in team) {
+						int n = dgvslots[slot].Rows.Add();
+						dgvslots[slot].Rows[n].Cells[0].Value = player.Name;
+						dgvslots[slot].Rows[n].Cells[1].Value = player.Salary;
+						dgvslots[slot].Rows[n].Cells[2].Value = player.Points;
+					}
+					var team_points = team.Sum(p => p.Points);
+					tabControl1.TabPages[slot - 1].Text += $" - {team_points}";
 				}
-				var team_points = team.Sum(p => p.Points);
-				tabControl1.TabPages[slot-1].Text += $" - {team_points}";
-			}
+			}), TaskScheduler.FromCurrentSynchronizationContext());
+			progressBar1.Hide();
 		}
 	}
 }

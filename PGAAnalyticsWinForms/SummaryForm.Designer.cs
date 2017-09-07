@@ -25,41 +25,42 @@
 		private void InitializeComponent() {
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
-			this.tabPage2 = new System.Windows.Forms.TabPage();
-			this.tabPage3 = new System.Windows.Forms.TabPage();
-			this.tabPage4 = new System.Windows.Forms.TabPage();
-			this.tabPage5 = new System.Windows.Forms.TabPage();
-			this.button1 = new System.Windows.Forms.Button();
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
-			this.dataGridView2 = new System.Windows.Forms.DataGridView();
 			this.PlayerName1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Salary1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Points1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.tabPage2 = new System.Windows.Forms.TabPage();
+			this.dataGridView2 = new System.Windows.Forms.DataGridView();
 			this.PlayerName2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Salary2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Points2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.tabPage3 = new System.Windows.Forms.TabPage();
 			this.dataGridView3 = new System.Windows.Forms.DataGridView();
 			this.PlayerName3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Salary3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Points3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.tabPage4 = new System.Windows.Forms.TabPage();
 			this.dataGridView4 = new System.Windows.Forms.DataGridView();
 			this.PlayerName4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Salary4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Points4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.tabPage5 = new System.Windows.Forms.TabPage();
 			this.dataGridView5 = new System.Windows.Forms.DataGridView();
 			this.PlayerName5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Salary5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Points5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.button1 = new System.Windows.Forms.Button();
+			this.progressBar1 = new System.Windows.Forms.ProgressBar();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
-			this.tabPage2.SuspendLayout();
-			this.tabPage3.SuspendLayout();
-			this.tabPage4.SuspendLayout();
-			this.tabPage5.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+			this.tabPage2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+			this.tabPage3.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+			this.tabPage4.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
+			this.tabPage5.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -70,76 +71,24 @@
 			this.tabControl1.Controls.Add(this.tabPage3);
 			this.tabControl1.Controls.Add(this.tabPage4);
 			this.tabControl1.Controls.Add(this.tabPage5);
-			this.tabControl1.Location = new System.Drawing.Point(12, 12);
+			this.tabControl1.Location = new System.Drawing.Point(9, 10);
+			this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(529, 337);
+			this.tabControl1.Size = new System.Drawing.Size(397, 274);
 			this.tabControl1.TabIndex = 0;
 			// 
 			// tabPage1
 			// 
 			this.tabPage1.Controls.Add(this.dataGridView1);
-			this.tabPage1.Location = new System.Drawing.Point(4, 25);
+			this.tabPage1.Location = new System.Drawing.Point(4, 22);
+			this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.tabPage1.Name = "tabPage1";
-			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage1.Size = new System.Drawing.Size(521, 308);
+			this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.tabPage1.Size = new System.Drawing.Size(389, 248);
 			this.tabPage1.TabIndex = 0;
 			this.tabPage1.Text = "Team #1";
 			this.tabPage1.UseVisualStyleBackColor = true;
-			// 
-			// tabPage2
-			// 
-			this.tabPage2.Controls.Add(this.dataGridView2);
-			this.tabPage2.Location = new System.Drawing.Point(4, 25);
-			this.tabPage2.Name = "tabPage2";
-			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage2.Size = new System.Drawing.Size(521, 308);
-			this.tabPage2.TabIndex = 1;
-			this.tabPage2.Text = "Team #2";
-			this.tabPage2.UseVisualStyleBackColor = true;
-			// 
-			// tabPage3
-			// 
-			this.tabPage3.Controls.Add(this.dataGridView3);
-			this.tabPage3.Location = new System.Drawing.Point(4, 25);
-			this.tabPage3.Name = "tabPage3";
-			this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage3.Size = new System.Drawing.Size(521, 308);
-			this.tabPage3.TabIndex = 2;
-			this.tabPage3.Text = "Team #3";
-			this.tabPage3.UseVisualStyleBackColor = true;
-			// 
-			// tabPage4
-			// 
-			this.tabPage4.Controls.Add(this.dataGridView4);
-			this.tabPage4.Location = new System.Drawing.Point(4, 25);
-			this.tabPage4.Name = "tabPage4";
-			this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage4.Size = new System.Drawing.Size(521, 308);
-			this.tabPage4.TabIndex = 3;
-			this.tabPage4.Text = "Team #4";
-			this.tabPage4.UseVisualStyleBackColor = true;
-			// 
-			// tabPage5
-			// 
-			this.tabPage5.Controls.Add(this.dataGridView5);
-			this.tabPage5.Location = new System.Drawing.Point(4, 25);
-			this.tabPage5.Name = "tabPage5";
-			this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage5.Size = new System.Drawing.Size(521, 308);
-			this.tabPage5.TabIndex = 4;
-			this.tabPage5.Text = "Team #5";
-			this.tabPage5.UseVisualStyleBackColor = true;
-			// 
-			// button1
-			// 
-			this.button1.Location = new System.Drawing.Point(462, 355);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(75, 23);
-			this.button1.TabIndex = 1;
-			this.button1.Text = "Close";
-			this.button1.UseVisualStyleBackColor = true;
-			this.button1.Click += new System.EventHandler(this.button1_Click);
 			// 
 			// dataGridView1
 			// 
@@ -150,30 +99,14 @@
             this.PlayerName1,
             this.Salary1,
             this.Points1});
-			this.dataGridView1.Location = new System.Drawing.Point(6, 6);
+			this.dataGridView1.Location = new System.Drawing.Point(4, 5);
+			this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.dataGridView1.Name = "dataGridView1";
 			this.dataGridView1.ReadOnly = true;
 			this.dataGridView1.RowHeadersVisible = false;
 			this.dataGridView1.RowTemplate.Height = 24;
-			this.dataGridView1.Size = new System.Drawing.Size(509, 296);
+			this.dataGridView1.Size = new System.Drawing.Size(382, 240);
 			this.dataGridView1.TabIndex = 0;
-			// 
-			// dataGridView2
-			// 
-			this.dataGridView2.AllowUserToAddRows = false;
-			this.dataGridView2.AllowUserToDeleteRows = false;
-			this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.PlayerName2,
-            this.Salary2,
-            this.Points2});
-			this.dataGridView2.Location = new System.Drawing.Point(6, 6);
-			this.dataGridView2.Name = "dataGridView2";
-			this.dataGridView2.ReadOnly = true;
-			this.dataGridView2.RowHeadersVisible = false;
-			this.dataGridView2.RowTemplate.Height = 24;
-			this.dataGridView2.Size = new System.Drawing.Size(509, 296);
-			this.dataGridView2.TabIndex = 0;
 			// 
 			// PlayerName1
 			// 
@@ -193,6 +126,36 @@
 			this.Points1.Name = "Points1";
 			this.Points1.ReadOnly = true;
 			// 
+			// tabPage2
+			// 
+			this.tabPage2.Controls.Add(this.dataGridView2);
+			this.tabPage2.Location = new System.Drawing.Point(4, 22);
+			this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.tabPage2.Name = "tabPage2";
+			this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.tabPage2.Size = new System.Drawing.Size(389, 248);
+			this.tabPage2.TabIndex = 1;
+			this.tabPage2.Text = "Team #2";
+			this.tabPage2.UseVisualStyleBackColor = true;
+			// 
+			// dataGridView2
+			// 
+			this.dataGridView2.AllowUserToAddRows = false;
+			this.dataGridView2.AllowUserToDeleteRows = false;
+			this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.PlayerName2,
+            this.Salary2,
+            this.Points2});
+			this.dataGridView2.Location = new System.Drawing.Point(4, 5);
+			this.dataGridView2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.dataGridView2.Name = "dataGridView2";
+			this.dataGridView2.ReadOnly = true;
+			this.dataGridView2.RowHeadersVisible = false;
+			this.dataGridView2.RowTemplate.Height = 24;
+			this.dataGridView2.Size = new System.Drawing.Size(382, 240);
+			this.dataGridView2.TabIndex = 0;
+			// 
 			// PlayerName2
 			// 
 			this.PlayerName2.HeaderText = "Player Name";
@@ -211,6 +174,18 @@
 			this.Points2.Name = "Points2";
 			this.Points2.ReadOnly = true;
 			// 
+			// tabPage3
+			// 
+			this.tabPage3.Controls.Add(this.dataGridView3);
+			this.tabPage3.Location = new System.Drawing.Point(4, 22);
+			this.tabPage3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.tabPage3.Name = "tabPage3";
+			this.tabPage3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.tabPage3.Size = new System.Drawing.Size(389, 248);
+			this.tabPage3.TabIndex = 2;
+			this.tabPage3.Text = "Team #3";
+			this.tabPage3.UseVisualStyleBackColor = true;
+			// 
 			// dataGridView3
 			// 
 			this.dataGridView3.AllowUserToAddRows = false;
@@ -220,12 +195,13 @@
             this.PlayerName3,
             this.Salary3,
             this.Points3});
-			this.dataGridView3.Location = new System.Drawing.Point(6, 6);
+			this.dataGridView3.Location = new System.Drawing.Point(4, 5);
+			this.dataGridView3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.dataGridView3.Name = "dataGridView3";
 			this.dataGridView3.ReadOnly = true;
 			this.dataGridView3.RowHeadersVisible = false;
 			this.dataGridView3.RowTemplate.Height = 24;
-			this.dataGridView3.Size = new System.Drawing.Size(509, 296);
+			this.dataGridView3.Size = new System.Drawing.Size(382, 240);
 			this.dataGridView3.TabIndex = 0;
 			// 
 			// PlayerName3
@@ -246,6 +222,18 @@
 			this.Points3.Name = "Points3";
 			this.Points3.ReadOnly = true;
 			// 
+			// tabPage4
+			// 
+			this.tabPage4.Controls.Add(this.dataGridView4);
+			this.tabPage4.Location = new System.Drawing.Point(4, 22);
+			this.tabPage4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.tabPage4.Name = "tabPage4";
+			this.tabPage4.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.tabPage4.Size = new System.Drawing.Size(389, 248);
+			this.tabPage4.TabIndex = 3;
+			this.tabPage4.Text = "Team #4";
+			this.tabPage4.UseVisualStyleBackColor = true;
+			// 
 			// dataGridView4
 			// 
 			this.dataGridView4.AllowUserToAddRows = false;
@@ -255,12 +243,13 @@
             this.PlayerName4,
             this.Salary4,
             this.Points4});
-			this.dataGridView4.Location = new System.Drawing.Point(6, 6);
+			this.dataGridView4.Location = new System.Drawing.Point(4, 5);
+			this.dataGridView4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.dataGridView4.Name = "dataGridView4";
 			this.dataGridView4.ReadOnly = true;
 			this.dataGridView4.RowHeadersVisible = false;
 			this.dataGridView4.RowTemplate.Height = 24;
-			this.dataGridView4.Size = new System.Drawing.Size(509, 296);
+			this.dataGridView4.Size = new System.Drawing.Size(382, 240);
 			this.dataGridView4.TabIndex = 0;
 			// 
 			// PlayerName4
@@ -281,6 +270,18 @@
 			this.Points4.Name = "Points4";
 			this.Points4.ReadOnly = true;
 			// 
+			// tabPage5
+			// 
+			this.tabPage5.Controls.Add(this.dataGridView5);
+			this.tabPage5.Location = new System.Drawing.Point(4, 22);
+			this.tabPage5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.tabPage5.Name = "tabPage5";
+			this.tabPage5.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.tabPage5.Size = new System.Drawing.Size(389, 248);
+			this.tabPage5.TabIndex = 4;
+			this.tabPage5.Text = "Team #5";
+			this.tabPage5.UseVisualStyleBackColor = true;
+			// 
 			// dataGridView5
 			// 
 			this.dataGridView5.AllowUserToAddRows = false;
@@ -290,12 +291,13 @@
             this.PlayerName5,
             this.Salary5,
             this.Points5});
-			this.dataGridView5.Location = new System.Drawing.Point(6, 6);
+			this.dataGridView5.Location = new System.Drawing.Point(4, 5);
+			this.dataGridView5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.dataGridView5.Name = "dataGridView5";
 			this.dataGridView5.ReadOnly = true;
 			this.dataGridView5.RowHeadersVisible = false;
 			this.dataGridView5.RowTemplate.Height = 24;
-			this.dataGridView5.Size = new System.Drawing.Size(509, 296);
+			this.dataGridView5.Size = new System.Drawing.Size(382, 240);
 			this.dataGridView5.TabIndex = 0;
 			// 
 			// PlayerName5
@@ -316,26 +318,47 @@
 			this.Points5.Name = "Points5";
 			this.Points5.ReadOnly = true;
 			// 
+			// button1
+			// 
+			this.button1.Location = new System.Drawing.Point(346, 288);
+			this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(56, 19);
+			this.button1.TabIndex = 1;
+			this.button1.Text = "Close";
+			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.button1_Click);
+			// 
+			// progressBar1
+			// 
+			this.progressBar1.Location = new System.Drawing.Point(17, 288);
+			this.progressBar1.Name = "progressBar1";
+			this.progressBar1.Size = new System.Drawing.Size(291, 23);
+			this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+			this.progressBar1.TabIndex = 2;
+			// 
 			// SummaryForm
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(553, 390);
+			this.ClientSize = new System.Drawing.Size(415, 317);
+			this.Controls.Add(this.progressBar1);
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.tabControl1);
+			this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.Name = "SummaryForm";
 			this.Text = "SummaryForm";
 			this.Load += new System.EventHandler(this.SummaryForm_Load);
 			this.tabControl1.ResumeLayout(false);
 			this.tabPage1.ResumeLayout(false);
-			this.tabPage2.ResumeLayout(false);
-			this.tabPage3.ResumeLayout(false);
-			this.tabPage4.ResumeLayout(false);
-			this.tabPage5.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+			this.tabPage2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+			this.tabPage3.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+			this.tabPage4.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
+			this.tabPage5.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
 			this.ResumeLayout(false);
 
@@ -370,5 +393,6 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn PlayerName5;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Salary5;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Points5;
+		private System.Windows.Forms.ProgressBar progressBar1;
 	}
 }

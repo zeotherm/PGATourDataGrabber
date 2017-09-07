@@ -7,6 +7,6 @@ using System.Threading.Tasks;
 namespace PGADataScraper.API.Interfaces {
 	
 	public interface ITeamChooser {
-		IEnumerable<IEnumerable<ScorablePlayer>> ComputeTopTeams(IEnumerable<ScorablePlayer> sps, IEnumerable<ScorablePlayer> keepers);
+		Task<IEnumerable<IEnumerable<ScorablePlayer>>> ComputeTopTeams(IEnumerable<ScorablePlayer> sps, IEnumerable<ScorablePlayer> keepers);
 	}
 }
