@@ -31,7 +31,7 @@ namespace PGAAnalyticsWinForms {
 		private void button1_Click(object sender, EventArgs e) {
 			this.Hide();
 
-			var Summary = new SummaryForm(_sps, new List<ScorablePlayer>());
+			var Summary = new SummaryForm(_sps, new List<ScorablePlayer>(), new SimpleTeamChooser());
 			Summary.Closed += (s, args) => this.Close();
 			Summary.Show();
 		}
