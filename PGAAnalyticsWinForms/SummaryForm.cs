@@ -1,4 +1,5 @@
 ﻿using PGADataScraper.API;
+using PGADataScraper.API.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,13 +14,18 @@ namespace PGAAnalyticsWinForms {
 	public partial class SummaryForm : Form {
 		private Task<IEnumerable<IEnumerable<ScorablePlayer>>> teams;
 		private DataGridView[] dgvslots;
+		private readonly IEnumerable<ScorablePlayer> sps;
+		private readonly IEnumerable<ScorablePlayer> keepers;
+		private readonly ITeamChooser chooser;
 		private int slot;
-		public SummaryForm(IEnumerable<ScorablePlayer> sps, IEnumerable<ScorablePlayer> keepers) {
+		public SummaryForm(IEnumerable<ScorablePlayer> sps, IEnumerable<ScorablePlayer> keepers, ITeamChooser itc) {
 			this.Icon = Properties.Resources.golf;
 			InitializeComponent();
-
+			chooser = itc;
+			this.sps = sps;
+			this.keepers = keepers;
 			//TODO: This needs a splash screen
-			teams = new SimpleTeamChooser().ComputeTopTeams(sps, keepers);
+			
 			dgvslots = new DataGridView[tabControl1.TabCount + 1];
 
 			dgvslots[0] = null;
@@ -37,6 +43,7 @@ namespace PGAAnalyticsWinForms {
 
 		private void SummaryForm_Load(object sender, EventArgs e) {
 			progressBar1.Show();
+			teams = chooser.ComputeTopTeams(sps, keepers);
 			teams.ContinueWith(((best_teams) => {
 				var best = best_teams.Result;
 				
