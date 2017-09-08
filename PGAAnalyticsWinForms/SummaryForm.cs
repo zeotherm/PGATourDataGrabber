@@ -12,20 +12,15 @@ using System.Windows.Forms;
 
 namespace PGAAnalyticsWinForms {
 	public partial class SummaryForm : Form {
-		private Task<IEnumerable<ScorablePlayer>[]> teams;
 		private DataGridView[] dgvslots;
-		private readonly IEnumerable<ScorablePlayer> sps;
-		private readonly IEnumerable<ScorablePlayer> keepers;
-		private readonly ITeamChooser chooser;
+		private readonly IEnumerable<ScorablePlayer>[] teams;
 		private int slot;
-		public SummaryForm(IEnumerable<ScorablePlayer> sps, IEnumerable<ScorablePlayer> keepers, ITeamChooser itc) {
+		public SummaryForm(IEnumerable<ScorablePlayer>[] teams) {
 			this.Icon = Properties.Resources.golf;
 			InitializeComponent();
-			chooser = itc;
-			this.sps = sps;
-			this.keepers = keepers;
+			this.teams = teams;
 			//TODO: This needs a splash screen
-			teams = chooser.ComputeTopTeams(sps, keepers);
+			
 			dgvslots = new DataGridView[tabControl1.TabCount + 1];
 
 			dgvslots[0] = null;
@@ -42,24 +37,17 @@ namespace PGAAnalyticsWinForms {
 		}
 
 		private void SummaryForm_Load(object sender, EventArgs e) {
-			progressBar1.Show();
-			
-			teams.ContinueWith(((best_teams) => {
-				var best = best_teams.Result;
-				
-				foreach (var team in best) {
-					slot += 1;
-					foreach (var player in team) {
-						int n = dgvslots[slot].Rows.Add();
-						dgvslots[slot].Rows[n].Cells[0].Value = player.Name;
-						dgvslots[slot].Rows[n].Cells[1].Value = player.Salary;
-						dgvslots[slot].Rows[n].Cells[2].Value = player.Points;
-					}
-					var team_points = team.Sum(p => p.Points);
-					tabControl1.TabPages[slot - 1].Text += $" - {team_points}";
+			foreach (var team in teams) {
+				slot += 1;
+				foreach (var player in team) {
+					int n = dgvslots[slot].Rows.Add();
+					dgvslots[slot].Rows[n].Cells[0].Value = player.Name;
+					dgvslots[slot].Rows[n].Cells[1].Value = player.Salary;
+					dgvslots[slot].Rows[n].Cells[2].Value = player.Points;
 				}
-				progressBar1.Hide();
-			}), TaskScheduler.FromCurrentSynchronizationContext());
+				var team_points = team.Sum(p => p.Points);
+				tabControl1.TabPages[slot - 1].Text += $" - {team_points}";
+			}
 		}
 	}
 }
