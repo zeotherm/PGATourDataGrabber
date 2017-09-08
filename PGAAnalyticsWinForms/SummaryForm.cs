@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace PGAAnalyticsWinForms {
 	public partial class SummaryForm : Form {
-		private Task<IEnumerable<IEnumerable<ScorablePlayer>>> teams;
+		private Task<IEnumerable<ScorablePlayer>[]> teams;
 		private DataGridView[] dgvslots;
 		private readonly IEnumerable<ScorablePlayer> sps;
 		private readonly IEnumerable<ScorablePlayer> keepers;
@@ -25,7 +25,7 @@ namespace PGAAnalyticsWinForms {
 			this.sps = sps;
 			this.keepers = keepers;
 			//TODO: This needs a splash screen
-			
+			teams = chooser.ComputeTopTeams(sps, keepers);
 			dgvslots = new DataGridView[tabControl1.TabCount + 1];
 
 			dgvslots[0] = null;
@@ -43,7 +43,7 @@ namespace PGAAnalyticsWinForms {
 
 		private void SummaryForm_Load(object sender, EventArgs e) {
 			progressBar1.Show();
-			teams = chooser.ComputeTopTeams(sps, keepers);
+			
 			teams.ContinueWith(((best_teams) => {
 				var best = best_teams.Result;
 				
@@ -58,8 +58,8 @@ namespace PGAAnalyticsWinForms {
 					var team_points = team.Sum(p => p.Points);
 					tabControl1.TabPages[slot - 1].Text += $" - {team_points}";
 				}
+				progressBar1.Hide();
 			}), TaskScheduler.FromCurrentSynchronizationContext());
-			progressBar1.Hide();
 		}
 	}
 }
