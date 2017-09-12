@@ -41,8 +41,13 @@ namespace ResultsParser {
 
 			var data = espn.DocumentNode.Descendants("div").Where(e => e.Attributes["class"].Value == "mod-content");
 			var nodes = espn.DocumentNode.Descendants("div").Select(e => e.InnerHtml).ToList();
-						//.Where(x => x.Attributes["class"].Value == "mod-content").First();
-						// element 17 of the list has what I want
+			//.Where(x => x.Attributes["class"].Value == "mod-content").First();
+			// element 17 of the list has what I want
+
+			var findclasses = espn.DocumentNode.Descendants("div").Where(d =>
+					d.Attributes.Contains("class") && d.Attributes["class"].Value.Contains("mod-content")
+			);
+			var testchunk = espn.DocumentNode.SelectSingleNode("/html[1]/body[1]/div[1]/div[2]/div[1]/div[2]/div[3]/div[1]/div[1]/div[1]");
 			Console.WriteLine("Breakpoint");
 
 		}
