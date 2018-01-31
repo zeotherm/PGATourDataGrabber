@@ -17,6 +17,7 @@ namespace PGAAnalyticsWinForms
 		private IEnumerable<PlayerStats> _ps;
 		private Dictionary<string, List<NameValuePair>> _backing_data = new Dictionary<string, List<NameValuePair>>();
 		private DataGridView[] dgvslots;
+        private List<string> ManuallyAddedPlayers;
 		private int slot;
 		public Top10Lists(IEnumerable<PlayerStats> ps, IEnumerable<string> cats)
 		{
@@ -26,8 +27,8 @@ namespace PGAAnalyticsWinForms
 				t10.Add(new Top10ListElement(cat));
 			}
 			_ps = ps;
-			
-			dgvslots = new DataGridView[tabControl1.TabCount + 1];
+            ManuallyAddedPlayers = new List<string>();
+            dgvslots = new DataGridView[tabControl1.TabCount + 1];
 
 			dgvslots[0] = null;
 			dgvslots[1] = dataGridView1;
@@ -132,37 +133,51 @@ namespace PGAAnalyticsWinForms
 					if (avail_players.ContainsKey(player.Name)) {
 						avail_players[player.Name].IncreaseMulti();
 					} else {
-						var pstat = _ps.Where(p => p.player.FullName == player.Name).First();
-						var salary = (int)pstat.Salary;
-						var points = pstat.Points;
-						var multi = 1;
-						var cutsMade = 0;
-						var tournaments = 0;
-						var nt10s = pstat.stats.Where(s => s.Name == @"# of Top 10's").Select(t => t.Info.Value).First();
-						int top10s;
-						if( !int.TryParse(nt10s, out top10s)) {
-							top10s = 0;
-						}
-						avail_players.Add(player.Name,
-										 new ScorablePlayer(player.Name, 
-															salary, 
-															points, 
-															multi, 
-															tournaments, 
-															cutsMade, 
-															top10s));
-															
+                        AddPlayerByName(avail_players, player.Name);
 					}
 					
 				}
 			}
+            // Add in any manually selected players
+            foreach( var manPlayer in ManuallyAddedPlayers) {
+                AddPlayerByName(avail_players, manPlayer);
+            }
 			var AvailablePlayers = new AvailablePlayersDisplayForm(avail_players.Values.ToList());
 			AvailablePlayers.Closed += (s, args) => this.Close();
 			AvailablePlayers.Show();
 		}
-	}
 
-	internal class Top10ListElement {
+        private void AddPlayerByName(Dictionary<string, ScorablePlayer> a_players, string name) {
+            var pstat = _ps.Where(p => p.player.FullName == name).First();
+            var salary = (int)pstat.Salary;
+            var points = pstat.Points;
+            var multi = 1;
+            var cutsMade = 0;
+            var tournaments = 0;
+            var nt10s = pstat.stats.Where(s => s.Name == @"# of Top 10's").Select(t => t.Info.Value).First();
+            if (!int.TryParse(nt10s, out int top10s)) {
+                top10s = 0;
+            }
+            a_players.Add(name,
+                             new ScorablePlayer(name,
+                                                salary,
+                                                points,
+                                                multi,
+                                                tournaments,
+                                                cutsMade,
+                                                top10s));
+            return;
+        }
+
+        private void button2_Click(object sender, EventArgs e) {
+            var psd = new PlayerSelectionDialog(_ps);
+            if( psd.ShowDialog() == DialogResult.OK) {
+                ManuallyAddedPlayers.Add(psd.SelectedPlayer);
+            }
+        }
+    }
+
+    internal class Top10ListElement {
 		public string StatName {
 			get;
 			private set;

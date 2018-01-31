@@ -13,11 +13,12 @@ namespace PGAAnalyticsWinForms {
 	public partial class AvailablePlayersDisplayForm : Form {
 		private readonly IEnumerable<ScorablePlayer> _sps;
 		private Task<IEnumerable<ScorablePlayer>[]> teams;
-
-		public AvailablePlayersDisplayForm(IEnumerable<ScorablePlayer> sps) {
+        private readonly List<ScorablePlayer> _keepers;
+        public AvailablePlayersDisplayForm(IEnumerable<ScorablePlayer> sps) {
 			this.Icon = Properties.Resources.golf;
 			InitializeComponent();
 			_sps = sps;
+            _keepers = new List<ScorablePlayer>();
 			foreach( var player in _sps) {
 				int n = dataGridView1.Rows.Add();
 				dataGridView1.Rows[n].Cells[0].Value = player.Name;
@@ -31,7 +32,7 @@ namespace PGAAnalyticsWinForms {
 		}
 
 		private void button1_Click(object sender, EventArgs e) {
-			teams = new SimpleTeamChooser().ComputeTopTeams(_sps, new List<ScorablePlayer>());
+			teams = new SimpleTeamChooser().ComputeTopTeams(_sps, _keepers);
 			var plzWait = new OptimizingWaitForm();
 			plzWait.Show();
 			teams.ContinueWith(((best_teams) => {
@@ -45,5 +46,12 @@ namespace PGAAnalyticsWinForms {
 
 			
 		}
-	}
+
+        private void keeperBtn_Click(object sender, EventArgs e) {
+            var psd = new PlayerSelectionDialog(_sps);
+            if (psd.ShowDialog() == DialogResult.OK) {
+                _keepers.Add(_sps.Where(p => p.Name == psd.SelectedPlayer).First());
+            }
+        }
+    }
 }

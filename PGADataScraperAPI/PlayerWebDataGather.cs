@@ -83,8 +83,9 @@ namespace PGADataScraper.API
 		}
 
 		private async Task<string> GatherPlayerData(Player p) {
-			var webpath = String.Format(@"http://www.pgatour.com/data/players/{0}/2017stat.json", p.ID);
-			OnPlayerDownloadAttempt(new DownloadingPlayerEventArgs { Message = $"Downloading data for player {p.FullName}", TimeGrabbed = DateTime.Now });
+            // 2017 data: var webpath = String.Format(@"http://www.pgatour.com/data/players/{0}/2017stat.json", p.ID);
+            var webpath = String.Format(@"https://statdata.pgatour.com/players/{0}/2018stat.json", p.ID);
+            OnPlayerDownloadAttempt(new DownloadingPlayerEventArgs { Message = $"Downloading data for player {p.FullName}", TimeGrabbed = DateTime.Now });
 			return await wc.DownloadStringTaskAsync(webpath);
 		}
 
