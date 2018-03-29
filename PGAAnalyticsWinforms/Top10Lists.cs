@@ -8,9 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PGADataScraper.API;
+using System.Net;
+using HtmlAgilityPack;
+using System.Globalization;
 
 namespace PGAAnalyticsWinForms
 {
+	public class PlayerESPNData {
+		public string Name { get; set; }
+		public int Events { get; set; }
+		public int CutsMade { get; set; }
+		public int Top10s { get; set; }
+		public int Wins { get; set; }
+		public int CupPoints { get; set; }
+		public decimal Earnings { get; set; }
+	}
 	public partial class Top10Lists : Form
 	{
 		private List<Top10ListElement> t10 = new List<Top10ListElement>();
@@ -18,6 +30,7 @@ namespace PGAAnalyticsWinForms
 		private Dictionary<string, List<NameValuePair>> _backing_data = new Dictionary<string, List<NameValuePair>>();
 		private DataGridView[] dgvslots;
         private List<string> ManuallyAddedPlayers;
+		private List<PlayerESPNData> espnPlayerData;
 		private int slot;
 		public Top10Lists(IEnumerable<PlayerStats> ps, IEnumerable<string> cats)
 		{
@@ -38,6 +51,38 @@ namespace PGAAnalyticsWinForms
 			dgvslots[5] = dataGridView5;
 			dgvslots[6] = dataGridView6;
 			slot = 0;
+
+			// Populate ESPN results data set
+			var startOffsets = Enumerable.Range(0, 5).Select(x => x * 40);
+			espnPlayerData = new List<PlayerESPNData>();
+			foreach (var offset in startOffsets) {
+				var webscrape = GetESPNData(offset);
+
+				var espn = new HtmlAgilityPack.HtmlDocument();
+				espn.LoadHtml(webscrape);
+				var values = espn.DocumentNode.SelectSingleNode("/html[1]/body[1]/div[1]/div[2]/div[1]/div[2]/div[3]/div[1]/div[1]/div[1]/table[1]").ChildNodes;
+				foreach (var node in values.Skip(1)) {
+					//Console.WriteLine("What");
+					var name = node.ChildNodes[1].InnerText;
+					if (!Int32.TryParse(node.ChildNodes[3].InnerText, out int events)) continue;
+					if (!Int32.TryParse(node.ChildNodes[5].InnerText, out int cutsmade)) continue;
+					if (!Int32.TryParse(node.ChildNodes[6].InnerText, out int top10s)) continue;
+					if (!Int32.TryParse(node.ChildNodes[7].InnerText, out int wins)) continue;
+					if (!Int32.TryParse(node.ChildNodes[8].InnerText, NumberStyles.AllowThousands, CultureInfo.InvariantCulture, out int points)) continue;
+					if (!Decimal.TryParse(node.ChildNodes[9].InnerText, NumberStyles.AllowCurrencySymbol | NumberStyles.AllowDecimalPoint | NumberStyles.AllowThousands, new CultureInfo("en-US"), out decimal earns)) continue;
+
+					espnPlayerData.Add(new PlayerESPNData {
+						Name = name,
+						Events = events,
+						CutsMade = cutsmade,
+						Top10s = top10s,
+						Wins = wins,
+						CupPoints = points,
+						Earnings = earns
+					});
+				}
+			}
+
 		}
 
 		private void Top10Lists_Load(object sender, EventArgs e)
@@ -146,18 +191,42 @@ namespace PGAAnalyticsWinForms
 			AvailablePlayers.Closed += (s, args) => this.Close();
 			AvailablePlayers.Show();
 		}
-
-        private void AddPlayerByName(Dictionary<string, ScorablePlayer> a_players, string name) {
+		private string GetESPNData(int startPlayer) {
+			var wc = new WebClient();
+			// 2017 data: var webpath = String.Format(@"http://www.pgatour.com/data/players/{0}/2017stat.json", p.ID);
+			var webpath = String.Format($@"http://www.espn.com/golf/statistics/_/count/{startPlayer.ToString()}");
+			//OnPlayerDownloadAttempt(new DownloadingPlayerEventArgs { Message = $"Downloading data for player {p.FullName}", TimeGrabbed = DateTime.Now });
+			return wc.DownloadString(webpath);
+		}
+		private void AddPlayerByName(Dictionary<string, ScorablePlayer> a_players, string name) {
             var pstat = _ps.Where(p => p.player.FullName == name).First();
             var salary = (int)pstat.Salary;
             var points = pstat.Points;
             var multi = 1;
-            var cutsMade = 0;
-            var tournaments = 0;
-            var nt10s = pstat.stats.Where(s => s.Name == @"# of Top 10's").Select(t => t.Info.Value).First();
-            if (!int.TryParse(nt10s, out int top10s)) {
-                top10s = 0;
-            }
+			var playerNames = espnPlayerData.Select(p => p.Name).OrderBy(p => p).ToList();
+			var espnPlayerQuery = espnPlayerData.Where(epd => epd.Name == name);
+			//PlayerESPNData espnPlayer;
+			PlayerESPNData espnPlayer = espnPlayerQuery.Any() ? espnPlayerQuery.First() : null;
+			int cutsMade;
+			int tournaments;
+			int top10s;
+			decimal earning;
+			int cup_points;
+			if (espnPlayer != null) {
+				cutsMade = espnPlayer.CutsMade;
+				tournaments = espnPlayer.Events;
+				top10s = espnPlayer.Top10s;
+				earning = espnPlayer.Earnings;
+				cup_points = espnPlayer.CupPoints;
+			} else {
+				cutsMade = tournaments = top10s = cup_points = 0;
+				earning = 0.00M;
+			}
+				
+				//pstat.stats.Where(s => s.Name == @"# of Top 10's").Select(t => t.Info.Value).First();
+    //        if (!int.TryParse(nt10s, out int top10s)) {
+    //            top10s = 0;
+    //        }
             a_players.Add(name,
                              new ScorablePlayer(name,
                                                 salary,
@@ -165,7 +234,9 @@ namespace PGAAnalyticsWinForms
                                                 multi,
                                                 tournaments,
                                                 cutsMade,
-                                                top10s));
+                                                top10s,
+												earning,
+												cup_points));
             return;
         }
 

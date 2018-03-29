@@ -3,13 +3,24 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ResultsParser {
-	class Program {
+	public class PlayerSimpleData {
+		public string Name { get; set; }
+		public int Events { get; set; }
+		public int CutsMade { get; set; }
+		public int Top10s { get; set; }
+		public int Wins { get; set; }
+		public int CupPoints { get; set; }
+		public decimal Earnings { get; set; }
+	}
+	public class Program {
 		static void Main(string[] args) {
 			//using (var outcsv_file = new StreamWriter(@"C:\\Users\Matt\Desktop\PGATourDataGrabber\PLAYERSResults.csv")) {
 			//	outcsv_file.WriteLine("Name, Position, Course Par, Status, Total Score, Round 1, Round 2, Round 3, Round 4");
@@ -36,20 +47,58 @@ namespace ResultsParser {
 
 			//	}
 			//}
-			var espn = new HtmlDocument();
-			espn.Load(@"C:\Users\Matt\Downloads\espnscrape.html");
+			var startOffsets = Enumerable.Range(0, 5).Select(x => x * 40);
+			var results = new List<PlayerSimpleData>();
+			foreach (var offset in startOffsets) {
+				var webscrape = GetESPNData(offset);
 
-			var data = espn.DocumentNode.Descendants("div").Where(e => e.Attributes["class"].Value == "mod-content");
-			var nodes = espn.DocumentNode.Descendants("div").Select(e => e.InnerHtml).ToList();
-			//.Where(x => x.Attributes["class"].Value == "mod-content").First();
-			// element 17 of the list has what I want
+				var espn = new HtmlDocument();
+				espn.LoadHtml(webscrape);
+				//var data = espn.DocumentNode.Descendants("div").Where(e => e.Attributes["class"].Value == "mod-content");
+				//var nodes = espn.DocumentNode.Descendants("div").Select(e => e.InnerHtml).ToList();
+				////.Where(x => x.Attributes["class"].Value == "mod-content").First();
+				//// element 17 of the list has what I want
 
-			var findclasses = espn.DocumentNode.Descendants("div").Where(d =>
-					d.Attributes.Contains("class") && d.Attributes["class"].Value.Contains("mod-content")
-			);
-			var testchunk = espn.DocumentNode.SelectSingleNode("/html[1]/body[1]/div[1]/div[2]/div[1]/div[2]/div[3]/div[1]/div[1]/div[1]");
+				//var findclasses = espn.DocumentNode.Descendants("div").Where(d =>
+				//		d.Attributes.Contains("class") && d.Attributes["class"].Value.Contains("mod-content")
+				//);
+				var testchunk = espn.DocumentNode.SelectSingleNode("/html[1]/body[1]/div[1]/div[2]/div[1]/div[2]/div[3]/div[1]/div[1]/div[1]/table[1]");
+				//var tableentries = testchunk.SelectNodes("table[1]");///tr[2]");
+				var values = testchunk./*First().*/ChildNodes;
+
+				foreach (var node in values.Skip(1)) {
+					//Console.WriteLine("What");
+					var name = node.ChildNodes[1].InnerText;
+					if (!Int32.TryParse(node.ChildNodes[3].InnerText, out int events)) continue;
+					if (!Int32.TryParse(node.ChildNodes[5].InnerText, out int cutsmade)) continue;
+					if (!Int32.TryParse(node.ChildNodes[6].InnerText, out int top10s)) continue;
+					if (!Int32.TryParse(node.ChildNodes[7].InnerText, out int wins)) continue;
+					if (!Int32.TryParse(node.ChildNodes[8].InnerText, NumberStyles.AllowThousands, CultureInfo.InvariantCulture, out int points)) continue;
+					if (!Decimal.TryParse(node.ChildNodes[9].InnerText, NumberStyles.AllowCurrencySymbol | NumberStyles.AllowDecimalPoint | NumberStyles.AllowThousands, new CultureInfo("en-US"), out decimal earns)) continue;
+					results.Add(new PlayerSimpleData {
+						Name = name,
+						Events = events,
+						CutsMade = cutsmade,
+						Top10s = top10s,
+						Wins = wins,
+						CupPoints = points,
+						Earnings = earns
+					});
+					//results.Add(node.ChildNodes.Select(n => n.InnerText).ToList());
+				}
+			}
+			//var player = 
 			Console.WriteLine("Breakpoint");
 
+		}
+
+		static public string GetESPNData(int startPlayer) {
+			var wc = new WebClient();
+			// 2017 data: var webpath = String.Format(@"http://www.pgatour.com/data/players/{0}/2017stat.json", p.ID);
+			var webpath = String.Format($@"http://www.espn.com/golf/statistics/_/count/{startPlayer.ToString()}");
+			//OnPlayerDownloadAttempt(new DownloadingPlayerEventArgs { Message = $"Downloading data for player {p.FullName}", TimeGrabbed = DateTime.Now });
+			return wc.DownloadString(webpath);
+			//return await wc.DownloadStringTaskAsync(webpath);
 		}
 	}
 }

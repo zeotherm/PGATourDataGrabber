@@ -43,10 +43,12 @@ namespace PGAAnalyticsWinForms {
 					int n = dgvslots[slot].Rows.Add();
 					dgvslots[slot].Rows[n].Cells[0].Value = player.Name;
 					dgvslots[slot].Rows[n].Cells[1].Value = player.Salary;
-					dgvslots[slot].Rows[n].Cells[2].Value = player.Points;
+					dgvslots[slot].Rows[n].Cells[2].Value = player.Points.ToString("G4");
+					dgvslots[slot].Rows[n].Cells[3].Value = player.CutsMade;
+					dgvslots[slot].Rows[n].Cells[4].Value = player.Tournaments;
 				}
 				var team_points = team.Sum(p => p.Points);
-				tabControl1.TabPages[slot - 1].Text += $" - {team_points}";
+				tabControl1.TabPages[slot - 1].Text += $" - {team_points:G5}";
 			}
 		}
 	}
