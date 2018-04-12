@@ -24,8 +24,6 @@
 		/// </summary>
 		private void InitializeComponent() {
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
-			this.button1 = new System.Windows.Forms.Button();
-			this.keeperBtn = new System.Windows.Forms.Button();
 			this.PlayerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Salary = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Points = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -35,6 +33,9 @@
 			this.Top10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Earnings = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.CupPoints = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.button1 = new System.Windows.Forms.Button();
+			this.keeperBtn = new System.Windows.Forms.Button();
+			this.exclude_btn = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -59,26 +60,6 @@
 			this.dataGridView1.RowTemplate.Height = 24;
 			this.dataGridView1.Size = new System.Drawing.Size(997, 369);
 			this.dataGridView1.TabIndex = 0;
-			// 
-			// button1
-			// 
-			this.button1.Location = new System.Drawing.Point(893, 396);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(116, 34);
-			this.button1.TabIndex = 1;
-			this.button1.Text = "Optimize Team";
-			this.button1.UseVisualStyleBackColor = true;
-			this.button1.Click += new System.EventHandler(this.button1_Click);
-			// 
-			// keeperBtn
-			// 
-			this.keeperBtn.Location = new System.Drawing.Point(760, 396);
-			this.keeperBtn.Name = "keeperBtn";
-			this.keeperBtn.Size = new System.Drawing.Size(118, 34);
-			this.keeperBtn.TabIndex = 2;
-			this.keeperBtn.Text = "Keepers";
-			this.keeperBtn.UseVisualStyleBackColor = true;
-			this.keeperBtn.Click += new System.EventHandler(this.keeperBtn_Click);
 			// 
 			// PlayerName
 			// 
@@ -134,11 +115,42 @@
 			this.CupPoints.Name = "CupPoints";
 			this.CupPoints.ReadOnly = true;
 			// 
+			// button1
+			// 
+			this.button1.Location = new System.Drawing.Point(893, 396);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(116, 34);
+			this.button1.TabIndex = 1;
+			this.button1.Text = "Optimize Team";
+			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.button1_Click);
+			// 
+			// keeperBtn
+			// 
+			this.keeperBtn.Location = new System.Drawing.Point(760, 396);
+			this.keeperBtn.Name = "keeperBtn";
+			this.keeperBtn.Size = new System.Drawing.Size(118, 34);
+			this.keeperBtn.TabIndex = 2;
+			this.keeperBtn.Text = "Keepers";
+			this.keeperBtn.UseVisualStyleBackColor = true;
+			this.keeperBtn.Click += new System.EventHandler(this.keeperBtn_Click);
+			// 
+			// exclude_btn
+			// 
+			this.exclude_btn.Location = new System.Drawing.Point(639, 396);
+			this.exclude_btn.Name = "exclude_btn";
+			this.exclude_btn.Size = new System.Drawing.Size(104, 34);
+			this.exclude_btn.TabIndex = 3;
+			this.exclude_btn.Text = "Exclude";
+			this.exclude_btn.UseVisualStyleBackColor = true;
+			this.exclude_btn.Click += new System.EventHandler(this.exclude_btn_Click);
+			// 
 			// AvailablePlayersDisplayForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1021, 442);
+			this.Controls.Add(this.exclude_btn);
 			this.Controls.Add(this.keeperBtn);
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.dataGridView1);
@@ -163,5 +175,6 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn Top10;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Earnings;
 		private System.Windows.Forms.DataGridViewTextBoxColumn CupPoints;
+		private System.Windows.Forms.Button exclude_btn;
 	}
 }

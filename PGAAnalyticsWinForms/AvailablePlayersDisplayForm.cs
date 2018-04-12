@@ -14,11 +14,17 @@ namespace PGAAnalyticsWinForms {
 		private readonly IEnumerable<ScorablePlayer> _sps;
 		private Task<IEnumerable<ScorablePlayer>[]> teams;
         private readonly List<ScorablePlayer> _keepers;
-        public AvailablePlayersDisplayForm(IEnumerable<ScorablePlayer> sps) {
+		private readonly List<ScorablePlayer> _excluded;
+		private readonly double avgPts;
+		private readonly double stddevPts;
+        public AvailablePlayersDisplayForm(IEnumerable<ScorablePlayer> sps, double avgCupPts, double stddevCupPts) {
 			this.Icon = Properties.Resources.golf;
 			InitializeComponent();
 			_sps = sps;
+			avgPts = avgCupPts;
+			stddevPts = stddevCupPts;
             _keepers = new List<ScorablePlayer>();
+			_excluded = new List<ScorablePlayer>();
 			foreach( var player in _sps) {
 				int n = dataGridView1.Rows.Add();
 				dataGridView1.Rows[n].Cells[0].Value = player.Name;
@@ -36,21 +42,30 @@ namespace PGAAnalyticsWinForms {
 		private void button1_Click(object sender, EventArgs e) {
 			var modifiedPlayers = new List<ScorablePlayer>();
 			foreach( var p in _sps) {
+				if (_excluded.Contains(p)) continue;
 				double cutfactor;
 				if (p.Tournaments != 0) {
 					cutfactor = (double)p.CutsMade / p.Tournaments;
 				} else {
 					cutfactor = 2.0 / 3.0;
 				}
+				double modfactor;
+				try {
+					modfactor = 1.0 + (p.CupPoints / p.Events - avgPts) / (10.0 * stddevPts);
+				} catch (DivideByZeroException) {
+					modfactor = 1.0;
+				}
+				var top10modFactor = Math.Pow(1.05, p.Top10s);
 				modifiedPlayers.Add(new ScorablePlayer(p.Name,
 													   p.Salary,
-													   p.Points * cutfactor,
+													   p.Points * cutfactor * modfactor * top10modFactor,
 													   p.Multi,
 													   p.Tournaments,
 													   p.CutsMade,
 													   p.Top10s,
 													   p.Earnings,
-													   p.CupPoints));
+													   p.CupPoints,
+													   p.Events));
 					
 					
 				
@@ -75,6 +90,24 @@ namespace PGAAnalyticsWinForms {
             if (psd.ShowDialog() == DialogResult.OK) {
                 _keepers.Add(_sps.Where(p => p.Name == psd.SelectedPlayer).First());
             }
-        }
-    }
+			foreach (DataGridViewRow row in dataGridView1.Rows) {
+				if ((string)row.Cells[0].Value == psd.SelectedPlayer) {
+					row.DefaultCellStyle.BackColor = Color.LightGreen;
+				}
+			}
+
+		}
+
+		private void exclude_btn_Click(object sender, EventArgs e) {
+			var psd = new PlayerSelectionDialog(_sps);
+			if (psd.ShowDialog() == DialogResult.OK) {
+				_excluded.Add(_sps.Where(p => p.Name == psd.SelectedPlayer).First());
+			}
+			foreach (DataGridViewRow row in dataGridView1.Rows) {
+				if ((string)row.Cells[0].Value == psd.SelectedPlayer) {
+					row.DefaultCellStyle.BackColor = Color.LightSalmon;
+				}
+			}
+		}
+	}
 }

@@ -35,6 +35,8 @@
 			this.unselectedList = new System.Windows.Forms.ListBox();
 			this.selectButton = new System.Windows.Forms.Button();
 			this.deselectButton = new System.Windows.Forms.Button();
+			this.btnSave = new System.Windows.Forms.Button();
+			this.btnLoad = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.SuspendLayout();
@@ -113,11 +115,33 @@
 			this.deselectButton.UseVisualStyleBackColor = true;
 			this.deselectButton.Click += new System.EventHandler(this.deselectButton_Click);
 			// 
+			// btnSave
+			// 
+			this.btnSave.Location = new System.Drawing.Point(482, 363);
+			this.btnSave.Name = "btnSave";
+			this.btnSave.Size = new System.Drawing.Size(97, 28);
+			this.btnSave.TabIndex = 6;
+			this.btnSave.Text = "Save";
+			this.btnSave.UseVisualStyleBackColor = true;
+			this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+			// 
+			// btnLoad
+			// 
+			this.btnLoad.Location = new System.Drawing.Point(393, 363);
+			this.btnLoad.Name = "btnLoad";
+			this.btnLoad.Size = new System.Drawing.Size(83, 28);
+			this.btnLoad.TabIndex = 7;
+			this.btnLoad.Text = "Load";
+			this.btnLoad.UseVisualStyleBackColor = true;
+			this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
+			// 
 			// StatSelectionForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(712, 404);
+			this.Controls.Add(this.btnLoad);
+			this.Controls.Add(this.btnSave);
 			this.Controls.Add(this.deselectButton);
 			this.Controls.Add(this.selectButton);
 			this.Controls.Add(this.groupBox2);
@@ -140,5 +164,7 @@
 		private System.Windows.Forms.ListBox unselectedList;
 		private System.Windows.Forms.Button selectButton;
 		private System.Windows.Forms.Button deselectButton;
+		private System.Windows.Forms.Button btnSave;
+		private System.Windows.Forms.Button btnLoad;
 	}
 }

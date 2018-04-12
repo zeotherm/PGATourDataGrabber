@@ -14,15 +14,6 @@ using System.Globalization;
 
 namespace PGAAnalyticsWinForms
 {
-	public class PlayerESPNData {
-		public string Name { get; set; }
-		public int Events { get; set; }
-		public int CutsMade { get; set; }
-		public int Top10s { get; set; }
-		public int Wins { get; set; }
-		public int CupPoints { get; set; }
-		public decimal Earnings { get; set; }
-	}
 	public partial class Top10Lists : Form
 	{
 		private List<Top10ListElement> t10 = new List<Top10ListElement>();
@@ -31,6 +22,8 @@ namespace PGAAnalyticsWinForms
 		private DataGridView[] dgvslots;
         private List<string> ManuallyAddedPlayers;
 		private List<PlayerESPNData> espnPlayerData;
+		private double stddev_pts;
+		private double avg_pts;
 		private int slot;
 		public Top10Lists(IEnumerable<PlayerStats> ps, IEnumerable<string> cats)
 		{
@@ -82,7 +75,9 @@ namespace PGAAnalyticsWinForms
 					});
 				}
 			}
-
+			avg_pts = espnPlayerData.Average(p => p.CupPoints / p.Events); //average cup point per event
+			double sum = espnPlayerData.Sum(p => Math.Pow(p.CupPoints / p.Events - avg_pts, 2.0));
+			stddev_pts = Math.Sqrt(sum / espnPlayerData.Count);
 		}
 
 		private void Top10Lists_Load(object sender, EventArgs e)
@@ -187,15 +182,13 @@ namespace PGAAnalyticsWinForms
             foreach( var manPlayer in ManuallyAddedPlayers) {
                 AddPlayerByName(avail_players, manPlayer);
             }
-			var AvailablePlayers = new AvailablePlayersDisplayForm(avail_players.Values.ToList());
+			var AvailablePlayers = new AvailablePlayersDisplayForm(avail_players.Values.ToList(), avg_pts, stddev_pts);
 			AvailablePlayers.Closed += (s, args) => this.Close();
 			AvailablePlayers.Show();
 		}
-		private string GetESPNData(int startPlayer) {
+		private string GetESPNData(int playerOffset) {
 			var wc = new WebClient();
-			// 2017 data: var webpath = String.Format(@"http://www.pgatour.com/data/players/{0}/2017stat.json", p.ID);
-			var webpath = String.Format($@"http://www.espn.com/golf/statistics/_/count/{startPlayer.ToString()}");
-			//OnPlayerDownloadAttempt(new DownloadingPlayerEventArgs { Message = $"Downloading data for player {p.FullName}", TimeGrabbed = DateTime.Now });
+			var webpath = String.Format($@"http://www.espn.com/golf/statistics/_/count/{playerOffset.ToString()}");
 			return wc.DownloadString(webpath);
 		}
 		private void AddPlayerByName(Dictionary<string, ScorablePlayer> a_players, string name) {
@@ -210,6 +203,7 @@ namespace PGAAnalyticsWinForms
 			int cutsMade;
 			int tournaments;
 			int top10s;
+			int events;
 			decimal earning;
 			int cup_points;
 			if (espnPlayer != null) {
@@ -218,8 +212,9 @@ namespace PGAAnalyticsWinForms
 				top10s = espnPlayer.Top10s;
 				earning = espnPlayer.Earnings;
 				cup_points = espnPlayer.CupPoints;
+				events = espnPlayer.Events;
 			} else {
-				cutsMade = tournaments = top10s = cup_points = 0;
+				cutsMade = tournaments = top10s = cup_points = events = 0;
 				earning = 0.00M;
 			}
 				
@@ -236,7 +231,7 @@ namespace PGAAnalyticsWinForms
                                                 cutsMade,
                                                 top10s,
 												earning,
-												cup_points));
+												cup_points,events));
             return;
         }
 
@@ -248,7 +243,16 @@ namespace PGAAnalyticsWinForms
         }
     }
 
-    internal class Top10ListElement {
+	public class PlayerESPNData {
+		public string Name { get; set; }
+		public int Events { get; set; }
+		public int CutsMade { get; set; }
+		public int Top10s { get; set; }
+		public int Wins { get; set; }
+		public int CupPoints { get; set; }
+		public decimal Earnings { get; set; }
+	}
+	internal class Top10ListElement {
 		public string StatName {
 			get;
 			private set;

@@ -53,9 +53,9 @@ namespace PGADataScraper.API
 				while (!dksalfile.EndOfData)
 				{
 					var fields = dksalfile.ReadFields();
-					var name = fields[1];
-					var salary = Double.Parse(fields[2]);
-					var fpts = Double.Parse(fields[4]);
+					var name = fields[2];// Changed due to DK changing format 4/9/2018 fields[1];
+					var salary = Double.Parse(fields[5]);// ibid Double.Parse(fields[2]);
+					var fpts = Double.Parse(fields[8]); //ibid  Double.Parse(fields[4]);
 					var pl = stat_list.Where(p => p.player.FullName == name.Replace('-', ' '));
 					if (pl.Any())
 					{

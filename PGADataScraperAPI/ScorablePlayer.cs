@@ -9,7 +9,8 @@
 		public int Top10s { get; private set; }
 		public decimal Earnings { get; private set; }
 		public int CupPoints { get; private set; }
-		public ScorablePlayer(string n, int s, double p, int m, int t, int c, int t10, decimal earnings, int cupPoints) {
+		public int Events { get; private set; }
+		public ScorablePlayer(string n, int s, double p, int m, int t, int c, int t10, decimal earnings, int cupPoints, int events) {
 			Name = n;
 			Salary = s;
 			Points = p;
@@ -19,6 +20,7 @@
 			Top10s = t10;
 			Earnings = earnings;
 			CupPoints = cupPoints;
+			Events = events;
 		}
 
 		public void IncreaseMulti() { Multi += 1; return; }

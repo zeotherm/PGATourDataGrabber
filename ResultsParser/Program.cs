@@ -87,8 +87,17 @@ namespace ResultsParser {
 					//results.Add(node.ChildNodes.Select(n => n.InnerText).ToList());
 				}
 			}
-			//var player = 
-			Console.WriteLine("Breakpoint");
+
+			double average = results.Average(p => p.CupPoints/p.Events); //average cup point per event
+			double sum = results.Sum(p => Math.Pow(p.CupPoints/p.Events - average, 2.0));
+			double stddev = Math.Sqrt(sum / results.Count);
+			Console.WriteLine($"<CupPoints/Event> = {average:F2} +/- {stddev:F2}");
+			int i = 1;
+			foreach( var player in results.OrderByDescending( p=> p.CupPoints/p.Events)) {
+				var multiplier = 1.0 + (player.CupPoints / player.Events - average) / (10.0 * stddev);
+				Console.WriteLine($"{i++}: {player.Name}\t has {player.CupPoints/player.Events:F2} points/event which is a multiplier of {multiplier:F2}");
+			}
+			//Console.WriteLine("Breakpoint");
 
 		}
 
