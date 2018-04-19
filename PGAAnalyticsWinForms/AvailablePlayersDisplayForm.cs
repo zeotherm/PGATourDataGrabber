@@ -41,7 +41,19 @@ namespace PGAAnalyticsWinForms {
 
 		private void button1_Click(object sender, EventArgs e) {
 			var modifiedPlayers = new List<ScorablePlayer>();
-			foreach( var p in _sps) {
+			foreach (DataGridViewRow row in dataGridView1.Rows) {
+				if( row.DefaultCellStyle.BackColor == Color.LightSalmon) {
+					// Add to excluded
+					_excluded.Add(_sps.Where(p => p.Name == (string)row.Cells[0].Value).First());
+				}
+				if( row.DefaultCellStyle.BackColor == Color.LightGreen) {
+					// Add to keeper
+					_keepers.Add(_sps.Where(p => p.Name == (string)row.Cells[0].Value).First());
+				}
+			}
+
+
+			foreach ( var p in _sps) {
 				if (_excluded.Contains(p)) continue;
 				double cutfactor;
 				if (p.Tournaments != 0) {
@@ -108,6 +120,17 @@ namespace PGAAnalyticsWinForms {
 					row.DefaultCellStyle.BackColor = Color.LightSalmon;
 				}
 			}
+		}
+
+		private void dataGridView1_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e) {
+			var color_map = new Dictionary<Color, Color> {
+				{Color.White, Color.LightSalmon },
+				{Color.LightSalmon, Color.LightGreen },
+				{Color.LightGreen, Color.White }
+			};
+			var curr_color = dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor;
+			if (curr_color.IsEmpty) curr_color = Color.White;
+			dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = color_map[curr_color];
 		}
 	}
 }

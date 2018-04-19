@@ -22,6 +22,7 @@ namespace PGAAnalyticsWinForms
 		private DataGridView[] dgvslots;
         private List<string> ManuallyAddedPlayers;
 		private List<PlayerESPNData> espnPlayerData;
+		private HashSet<string> top10PlayersNames;
 		private double stddev_pts;
 		private double avg_pts;
 		private int slot;
@@ -44,7 +45,7 @@ namespace PGAAnalyticsWinForms
 			dgvslots[5] = dataGridView5;
 			dgvslots[6] = dataGridView6;
 			slot = 0;
-
+			top10PlayersNames = new HashSet<string>();
 			// Populate ESPN results data set
 			var startOffsets = Enumerable.Range(0, 5).Select(x => x * 40);
 			espnPlayerData = new List<PlayerESPNData>();
@@ -124,6 +125,7 @@ namespace PGAAnalyticsWinForms
 
 			foreach (var ndpd in _backing_data[statname]) {
 				int n = dgvslots[s].Rows.Add();
+				top10PlayersNames.Add(ndpd.Name);
 				dgvslots[s].Rows[n].Cells[0].Value = ndpd.Name;
 				dgvslots[s].Rows[n].Cells[1].Value = ndpd.Value;
 				if (n >= 9) break; // Only display 10, but allow for extras to be in the backing data
@@ -236,7 +238,7 @@ namespace PGAAnalyticsWinForms
         }
 
         private void button2_Click(object sender, EventArgs e) {
-            var psd = new PlayerSelectionDialog(_ps);
+            var psd = new PlayerSelectionDialog(_ps.Where(player => !top10PlayersNames.Contains(player.player.FullName)));
             if( psd.ShowDialog() == DialogResult.OK) {
                 ManuallyAddedPlayers.Add(psd.SelectedPlayer);
             }
